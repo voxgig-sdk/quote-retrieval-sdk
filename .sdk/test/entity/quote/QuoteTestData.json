@@ -1,0 +1,33 @@
+{
+  "existing": {
+    "quote": {
+      "QUOTE00": {
+        "author": {},
+        "created_at": "s29",
+        "id": "QUOTE00",
+        "text": "s2b"
+      },
+      "QUOTE01": {
+        "author": {},
+        "created_at": "s51",
+        "id": "QUOTE01",
+        "text": "s53"
+      },
+      "QUOTE02": {
+        "author": {},
+        "created_at": "s79",
+        "id": "QUOTE02",
+        "text": "s7b"
+      }
+    }
+  },
+  "new": {
+    "quote": {
+      "quote_ref01": {
+        "author": {},
+        "created_at": "sa1",
+        "text": "sa3"
+      }
+    }
+  }
+}

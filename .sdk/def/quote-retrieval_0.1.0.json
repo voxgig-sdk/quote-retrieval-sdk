@@ -1,0 +1,301 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Quote Retrieval API",
+    "description": "This API retrieves quotes based on a specific ID. It allows you to get a random quote or the quote of the day using designated special values. Access quotes programmatically with our simple REST API. No authentication required.",
+    "version": "1.0.0",
+    "contact": {
+      "url": "https://www.quoterism.com/developer"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://quoterism.com",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/api/quotes": {
+      "get": {
+        "summary": "Retrieve a paginated list of quotes",
+        "description": "Retrieve a paginated list of quotes with author information.",
+        "operationId": "getQuotes",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number (0-indexed). Defaults to 0.",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 0
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Number of quotes per page (1-100). Defaults to 12.",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 12
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/QuoteWithTimestamp"
+                      }
+                    },
+                    "pagination": {
+                      "$ref": "#/components/schemas/Pagination"
+                    }
+                  }
+                },
+                "example": {
+                  "data": [
+                    {
+                      "id": "abc123",
+                      "text": "The only way to do great work is to love what you do.",
+                      "author": {
+                        "id": "xyz789",
+                        "name": "Steve Jobs",
+                        "slug": "steve-jobs"
+                      },
+                      "createdAt": "2024-01-15T10:30:00.000Z"
+                    }
+                  ],
+                  "pagination": {
+                    "page": 0,
+                    "limit": 12,
+                    "totalCount": 1000,
+                    "totalPages": 84,
+                    "hasNextPage": true,
+                    "hasPreviousPage": false
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "error": "Invalid request"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/quotes/{id}": {
+      "get": {
+        "summary": "Retrieve a quote by ID or special value",
+        "description": "Retrieve a quote by its ID, or use special values for random quotes and the quote of the day. Special values: 'random' for a random quote, 'quote-of-the-day' for the daily quote.",
+        "operationId": "getQuoteById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The quote ID, or a special value: 'random' for a random quote, 'quote-of-the-day' for the daily quote.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "specificId": {
+                "summary": "Specific quote ID",
+                "value": "abc123"
+              },
+              "random": {
+                "summary": "Random quote",
+                "value": "random"
+              },
+              "quoteOfTheDay": {
+                "summary": "Quote of the day",
+                "value": "quote-of-the-day"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Quote"
+                },
+                "example": {
+                  "id": "abc123",
+                  "text": "The only way to do great work is to love what you do.",
+                  "author": {
+                    "id": "xyz789",
+                    "name": "Steve Jobs"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Quote not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "error": "Quote not found"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Quote": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the quote"
+          },
+          "text": {
+            "type": "string",
+            "description": "The quote text"
+          },
+          "author": {
+            "$ref": "#/components/schemas/Author"
+          }
+        },
+        "required": [
+          "id",
+          "text",
+          "author"
+        ]
+      },
+      "QuoteWithTimestamp": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Quote"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "author": {
+                "$ref": "#/components/schemas/AuthorWithSlug"
+              },
+              "createdAt": {
+                "type": "string",
+                "format": "date-time",
+                "description": "Timestamp when the quote was created"
+              }
+            }
+          }
+        ]
+      },
+      "Author": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the author"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the author"
+          }
+        },
+        "required": [
+          "id",
+          "name"
+        ]
+      },
+      "AuthorWithSlug": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Author"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "slug": {
+                "type": "string",
+                "description": "URL-friendly version of the author's name"
+              }
+            }
+          }
+        ]
+      },
+      "Pagination": {
+        "type": "object",
+        "properties": {
+          "page": {
+            "type": "integer",
+            "description": "Current page number (0-indexed)"
+          },
+          "limit": {
+            "type": "integer",
+            "description": "Number of items per page"
+          },
+          "totalCount": {
+            "type": "integer",
+            "description": "Total number of quotes available"
+          },
+          "totalPages": {
+            "type": "integer",
+            "description": "Total number of pages"
+          },
+          "hasNextPage": {
+            "type": "boolean",
+            "description": "Indicates if there is a next page"
+          },
+          "hasPreviousPage": {
+            "type": "boolean",
+            "description": "Indicates if there is a previous page"
+          }
+        },
+        "required": [
+          "page",
+          "limit",
+          "totalCount",
+          "totalPages",
+          "hasNextPage",
+          "hasPreviousPage"
+        ]
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "Error message"
+          }
+        },
+        "required": [
+          "error"
+        ]
+      }
+    }
+  }
+}

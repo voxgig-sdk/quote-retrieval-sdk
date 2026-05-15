@@ -1,0 +1,23 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        url: "https://www.quoterism.com/developer"
+      }
+      description: "This API retrieves quotes based on a specific ID. It allows you to get a random quote or the quote of the day using designated special values. Access quotes programmatically with our simple REST API. No authentication required."
+      servers: [
+        {
+          description: "Production server"
+          url: "https://quoterism.com"
+        }
+      ]
+      title: "Quote Retrieval API"
+      version: "1.0.0"
+    }
+  }
+}
+
+}

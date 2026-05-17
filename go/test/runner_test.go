@@ -12,9 +12,9 @@ import (
 	"sync"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/quote-retrieval-sdk"
+	sdk "github.com/voxgig-sdk/quote-retrieval-sdk/go"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/quote-retrieval-sdk/go/utility/struct"
 )
 
 var envLocalOnce sync.Once

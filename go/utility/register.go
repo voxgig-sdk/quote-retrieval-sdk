@@ -1,6 +1,6 @@
 package utility
 
-import "github.com/voxgig-sdk/quote-retrieval-sdk/core"
+import "github.com/voxgig-sdk/quote-retrieval-sdk/go/core"
 
 func init() {
 	core.UtilityRegistrar = registerAll

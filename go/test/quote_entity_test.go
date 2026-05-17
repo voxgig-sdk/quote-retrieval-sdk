@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/quote-retrieval-sdk"
-	"github.com/voxgig-sdk/quote-retrieval-sdk/core"
+	sdk "github.com/voxgig-sdk/quote-retrieval-sdk/go"
+	"github.com/voxgig-sdk/quote-retrieval-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/quote-retrieval-sdk/go/utility/struct"
 )
 
 func TestQuoteEntity(t *testing.T) {

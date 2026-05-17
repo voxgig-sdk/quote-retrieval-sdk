@@ -3,7 +3,7 @@ package sdktest
 import (
 	"testing"
 
-	sdk "github.com/voxgig-sdk/quote-retrieval-sdk"
+	sdk "github.com/voxgig-sdk/quote-retrieval-sdk/go"
 )
 
 func TestCustomUtility(t *testing.T) {

@@ -1,10 +1,10 @@
 package voxgigquoteretrievalsdk
 
 import (
-	"github.com/voxgig-sdk/quote-retrieval-sdk/core"
-	"github.com/voxgig-sdk/quote-retrieval-sdk/entity"
-	"github.com/voxgig-sdk/quote-retrieval-sdk/feature"
-	_ "github.com/voxgig-sdk/quote-retrieval-sdk/utility"
+	"github.com/voxgig-sdk/quote-retrieval-sdk/go/core"
+	"github.com/voxgig-sdk/quote-retrieval-sdk/go/entity"
+	"github.com/voxgig-sdk/quote-retrieval-sdk/go/feature"
+	_ "github.com/voxgig-sdk/quote-retrieval-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

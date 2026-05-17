@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/quote-retrieval-sdk"
-	"github.com/voxgig-sdk/quote-retrieval-sdk/core"
+	sdk "github.com/voxgig-sdk/quote-retrieval-sdk/go"
+	"github.com/voxgig-sdk/quote-retrieval-sdk/go/core"
 )
 
 func TestQuoteDirect(t *testing.T) {

@@ -106,14 +106,12 @@ def _quote_direct_setup(mockres):
     env = runner.env_override({
         "QUOTERETRIEVAL_TEST_QUOTE_ENTID": {},
         "QUOTERETRIEVAL_TEST_LIVE": "FALSE",
-        "QUOTERETRIEVAL_APIKEY": "NONE",
     })
 
     live = env.get("QUOTERETRIEVAL_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
-            "apikey": env.get("QUOTERETRIEVAL_APIKEY"),
         }
         client = QuoteRetrievalSDK(merged_opts)
         return {

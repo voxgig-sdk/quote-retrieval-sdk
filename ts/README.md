@@ -17,9 +17,7 @@ loading a specific record.
 ```ts
 import { QuoteRetrievalSDK } from 'quote-retrieval'
 
-const client = new QuoteRetrievalSDK({
-  apikey: process.env.QUOTE-RETRIEVAL_APIKEY,
-})
+const client = new QuoteRetrievalSDK({})
 ```
 
 ### 2. List quotes
@@ -94,7 +92,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new QuoteRetrievalSDK({ apikey: '...' })
+const client = new QuoteRetrievalSDK()
 const testClient = client.tester()
 ```
 
@@ -130,7 +128,6 @@ const logger = {
 }
 
 const client = new QuoteRetrievalSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -141,7 +138,6 @@ Create a `.env.local` file at the project root:
 
 ```
 QUOTE-RETRIEVAL_TEST_LIVE=TRUE
-QUOTE-RETRIEVAL_APIKEY=<your-key>
 ```
 
 Then run:
@@ -159,7 +155,6 @@ cd ts && npm test
 
 ```ts
 new QuoteRetrievalSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -170,7 +165,6 @@ new QuoteRetrievalSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |

@@ -16,8 +16,20 @@ main: {
       ]
       title: "Quote Retrieval API"
       version: "1.0.0"
+      tagline: "Fetch quotes from Quoterism by ID, get a random one, or pull the daily pick"
+      homepage: "https://quoterism.com"
+      about_md: `The Quote Retrieval API is a small HTTP interface in front of [Quoterism](https://quoterism.com), a web catalogue of inspirational quotes from authors, philosophers, and leaders. The site, made in Jersey City, surfaces a daily quote, an "I'm Feeling Lucky" random pick, a Top 100 list, and browse-by-author and browse-by-category views.
+
+What you get from the API:
+- A quote fetched by a specific quote ID
+- A random quote (via a designated special value)
+- The quote of the day (via a designated special value)
+
+Operational notes: the [community catalogue entry](https://freepublicapis.com/quote-retrieval-api) notes the endpoint has been observed returning errors, so treat availability as best-effort. No authentication, rate-limit, or licence terms are published; check the Quoterism site's Contact / FAQ pages before relying on the data for redistribution.`
+      entity_desc: {
+        quote: "A single quotation record from the Quoterism catalogue, retrievable by ID or via the special values that map to a random quote or the quote of the day."
+      }
+      auth: false
     }
   }
-}
-
 }

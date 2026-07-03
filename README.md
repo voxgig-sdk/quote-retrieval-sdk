@@ -1,19 +1,8 @@
 # QuoteRetrieval SDK
 
-Fetch quotes from Quoterism by ID, get a random one, or pull the daily pick
+Quote Retrieval API client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Quote Retrieval API
-
-The Quote Retrieval API is a small HTTP interface in front of [Quoterism](https://quoterism.com), a web catalogue of inspirational quotes from authors, philosophers, and leaders. The site, made in Jersey City, surfaces a daily quote, an "I'm Feeling Lucky" random pick, a Top 100 list, and browse-by-author and browse-by-category views.
-
-What you get from the API:
-- A quote fetched by a specific quote ID
-- A random quote (via a designated special value)
-- The quote of the day (via a designated special value)
-
-Operational notes: the [community catalogue entry](https://freepublicapis.com/quote-retrieval-api) notes the endpoint has been observed returning errors, so treat availability as best-effort. No authentication, rate-limit, or licence terms are published; check the Quoterism site's Contact / FAQ pages before relying on the data for redistribution.
 
 ## Try it
 
@@ -47,29 +36,31 @@ gem install quote-retrieval-sdk
 luarocks install quote-retrieval-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { QuoteRetrievalSDK } from 'quote-retrieval'
 
-const client = new QuoteRetrievalSDK({})
+const client = new QuoteRetrievalSDK({
+  apikey: process.env.QUOTE-RETRIEVAL_APIKEY,
+})
 
 // List all quotes
 const quotes = await client.Quote().list()
+console.log(quotes.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -99,7 +90,7 @@ The API exposes one entity:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Quote** | A single quotation record from the Quoterism catalogue, retrievable by ID or via the special values that map to a random quote or the quote of the day. | `/api/quotes` |
+| **Quote** |  | `/api/quotes` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -109,17 +100,20 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from quoteretrieval_sdk import QuoteRetrievalSDK
 
-client = QuoteRetrievalSDK({})
+client = QuoteRetrievalSDK({
+    "apikey": os.environ.get("QUOTE-RETRIEVAL_APIKEY"),
+})
 
 # List all quotes
-quotes, err = client.Quote(None).list(None, None)
+quotes, err = client.Quote().list()
+print(quotes)
 
 # Load a specific quote
-quote, err = client.Quote(None).load(
-    {"id": "example_id"}, None
-)
+quote, err = client.Quote().load({"id": "example_id"})
+print(quote)
 ```
 
 ### PHP
@@ -128,15 +122,17 @@ quote, err = client.Quote(None).load(
 <?php
 require_once 'quoteretrieval_sdk.php';
 
-$client = new QuoteRetrievalSDK([]);
+$client = new QuoteRetrievalSDK([
+    "apikey" => getenv("QUOTE-RETRIEVAL_APIKEY"),
+]);
 
 // List all quotes
-[$quotes, $err] = $client->Quote(null)->list(null, null);
+[$quotes, $err] = $client->Quote()->list();
+print_r($quotes);
 
 // Load a specific quote
-[$quote, $err] = $client->Quote(null)->load(
-    ["id" => "example_id"], null
-);
+[$quote, $err] = $client->Quote()->load(["id" => "example_id"]);
+print_r($quote);
 ```
 
 ### Golang
@@ -144,10 +140,13 @@ $client = new QuoteRetrievalSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/quote-retrieval-sdk/go"
 
-client := sdk.NewQuoteRetrievalSDK(map[string]any{})
+client := sdk.NewQuoteRetrievalSDK(map[string]any{
+    "apikey": os.Getenv("QUOTE-RETRIEVAL_APIKEY"),
+})
 
 // List all quotes
 quotes, err := client.Quote(nil).List(nil, nil)
+fmt.Println(quotes)
 ```
 
 ### Ruby
@@ -155,15 +154,17 @@ quotes, err := client.Quote(nil).List(nil, nil)
 ```ruby
 require_relative "QuoteRetrieval_sdk"
 
-client = QuoteRetrievalSDK.new({})
+client = QuoteRetrievalSDK.new({
+  "apikey" => ENV["QUOTE-RETRIEVAL_APIKEY"],
+})
 
 # List all quotes
-quotes, err = client.Quote(nil).list(nil, nil)
+quotes, err = client.Quote().list
+puts quotes
 
 # Load a specific quote
-quote, err = client.Quote(nil).load(
-  { "id" => "example_id" }, nil
-)
+quote, err = client.Quote().load({ "id" => "example_id" })
+puts quote
 ```
 
 ### Lua
@@ -171,15 +172,17 @@ quote, err = client.Quote(nil).load(
 ```lua
 local sdk = require("quote-retrieval_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("QUOTE-RETRIEVAL_APIKEY"),
+})
 
 -- List all quotes
-local quotes, err = client:Quote(nil):list(nil, nil)
+local quotes, err = client:Quote():list()
+print(quotes)
 
 -- Load a specific quote
-local quote, err = client:Quote(nil):load(
-  { id = "example_id" }, nil
-)
+local quote, err = client:Quote():load({ id = "example_id" })
+print(quote)
 ```
 
 ## Unit testing in offline mode
@@ -198,25 +201,21 @@ const result = await client.Quote().load({ id: 'test01' })
 ### Python
 
 ```python
-client = QuoteRetrievalSDK.test(None, None)
-result, err = client.Quote(None).load(
-    {"id": "test01"}, None
-)
+client = QuoteRetrievalSDK.test()
+result, err = client.Quote().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = QuoteRetrievalSDK::test(null, null);
-[$result, $err] = $client->Quote(null)->load(
-    ["id" => "test01"], null
-);
+$client = QuoteRetrievalSDK::test();
+[$result, $err] = $client->Quote()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Quote(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -225,19 +224,15 @@ result, err := client.Quote(nil).Load(
 ### Ruby
 
 ```ruby
-client = QuoteRetrievalSDK.test(nil, nil)
-result, err = client.Quote(nil).load(
-  { "id" => "test01" }, nil
-)
+client = QuoteRetrievalSDK.test
+result, err = client.Quote().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Quote(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Quote():load({ id = "test01" })
 ```
 
 ## How it works
@@ -341,10 +336,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Quote Retrieval API
-
-- Upstream: [https://quoterism.com](https://quoterism.com)
 
 ---
 

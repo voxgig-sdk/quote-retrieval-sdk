@@ -115,12 +115,14 @@ function quote_direct_setup(mockres)
   local env = runner.env_override({
     ["QUOTERETRIEVAL_TEST_QUOTE_ENTID"] = {},
     ["QUOTERETRIEVAL_TEST_LIVE"] = "FALSE",
+    ["QUOTERETRIEVAL_APIKEY"] = "NONE",
   })
 
   local live = env["QUOTERETRIEVAL_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
+      apikey = env["QUOTERETRIEVAL_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

@@ -102,6 +102,7 @@ def _quote_basic_setup(extra):
         "QUOTERETRIEVAL_TEST_QUOTE_ENTID": idmap,
         "QUOTERETRIEVAL_TEST_LIVE": "FALSE",
         "QUOTERETRIEVAL_TEST_EXPLAIN": "FALSE",
+        "QUOTERETRIEVAL_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -112,6 +113,7 @@ def _quote_basic_setup(extra):
     if env.get("QUOTERETRIEVAL_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
+                "apikey": env.get("QUOTERETRIEVAL_APIKEY"),
             },
             extra or {},
         ])

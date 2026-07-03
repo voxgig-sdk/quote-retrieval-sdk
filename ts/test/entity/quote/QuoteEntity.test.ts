@@ -120,6 +120,7 @@ function basicSetup(extra?: any) {
     'QUOTE_RETRIEVAL_TEST_QUOTE_ENTID': idmap,
     'QUOTE_RETRIEVAL_TEST_LIVE': 'FALSE',
     'QUOTE_RETRIEVAL_TEST_EXPLAIN': 'FALSE',
+    'QUOTE_RETRIEVAL_APIKEY': 'NONE',
   })
 
   idmap = env['QUOTE_RETRIEVAL_TEST_QUOTE_ENTID']
@@ -129,6 +130,7 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new QuoteRetrievalSDK(merge([
       {
+        apikey: env.QUOTE_RETRIEVAL_APIKEY,
       },
       extra
     ]))

@@ -175,12 +175,14 @@ func quoteDirectSetup(mockres any) *quoteDirectSetupResult {
 	env := envOverride(map[string]any{
 		"QUOTERETRIEVAL_TEST_QUOTE_ENTID": map[string]any{},
 		"QUOTERETRIEVAL_TEST_LIVE":    "FALSE",
+		"QUOTERETRIEVAL_APIKEY":       "NONE",
 	})
 
 	live := env["QUOTERETRIEVAL_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
+			"apikey": env["QUOTERETRIEVAL_APIKEY"],
 		}
 		client := sdk.NewQuoteRetrievalSDK(mergedOpts)
 

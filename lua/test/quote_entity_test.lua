@@ -102,6 +102,7 @@ function quote_basic_setup(extra)
     ["QUOTERETRIEVAL_TEST_QUOTE_ENTID"] = idmap,
     ["QUOTERETRIEVAL_TEST_LIVE"] = "FALSE",
     ["QUOTERETRIEVAL_TEST_EXPLAIN"] = "FALSE",
+    ["QUOTERETRIEVAL_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -113,6 +114,7 @@ function quote_basic_setup(extra)
   if env["QUOTERETRIEVAL_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
+        apikey = env["QUOTERETRIEVAL_APIKEY"],
       },
       extra or {},
     })

@@ -121,12 +121,14 @@ function quote_direct_setup($mockres)
     $env = Runner::env_override([
         "QUOTERETRIEVAL_TEST_QUOTE_ENTID" => [],
         "QUOTERETRIEVAL_TEST_LIVE" => "FALSE",
+        "QUOTERETRIEVAL_APIKEY" => "NONE",
     ]);
 
     $live = $env["QUOTERETRIEVAL_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
+            "apikey" => $env["QUOTERETRIEVAL_APIKEY"],
         ];
         $client = new QuoteRetrievalSDK($merged_opts);
         return [

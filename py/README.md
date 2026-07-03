@@ -10,7 +10,7 @@ The Python SDK for the QuoteRetrieval API — an entity-oriented client followin
 
 ## Install
 ```bash
-pip install quote-retrieval-sdk
+pip install voxgig-sdk-quote-retrieval
 ```
 
 Or install from source:

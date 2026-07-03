@@ -1,8 +1,17 @@
 {
   "name": "voxgig-sdk/quote-retrieval",
-  "description": "QuoteRetrieval SDK for PHP",
+  "description": "Unofficial generated PHP SDK for the Quote Retrieval public API. Not affiliated with or endorsed by the upstream API provider.",
   "type": "library",
+  "keywords": ["voxgig", "sdk", "generated-sdk", "openapi", "api-client", "quote-retrieval"],
+  "homepage": "https://github.com/voxgig-sdk/quote-retrieval-sdk",
   "license": "MIT",
+  "authors": [
+    { "name": "Voxgig", "homepage": "https://voxgig.com" }
+  ],
+  "support": {
+    "issues": "https://github.com/voxgig-sdk/quote-retrieval-sdk/issues",
+    "source": "https://github.com/voxgig-sdk/quote-retrieval-sdk"
+  },
   "minimum-stability": "stable",
   "require": {
     "php": ">=8.2"

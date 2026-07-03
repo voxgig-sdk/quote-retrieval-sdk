@@ -10,13 +10,13 @@ The Ruby SDK for the QuoteRetrieval API — an entity-oriented client using idio
 
 ## Install
 ```bash
-gem install quote-retrieval-sdk
+gem install voxgig-sdk-quote-retrieval
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "quote-retrieval-sdk"
+gem "voxgig-sdk-quote-retrieval"
 ```
 
 Then run:

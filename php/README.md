@@ -10,7 +10,7 @@ The PHP SDK for the QuoteRetrieval API — an entity-oriented client using PHP c
 
 ## Install
 ```bash
-composer require voxgig/quote-retrieval-sdk
+composer require voxgig-sdk/quote-retrieval
 ```
 
 

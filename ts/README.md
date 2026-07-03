@@ -10,7 +10,7 @@ The TypeScript SDK for the QuoteRetrieval API — a type-safe, entity-oriented c
 
 ## Install
 ```bash
-npm install quote-retrieval
+npm install @voxgig-sdk/quote-retrieval
 ```
 ## Tutorial: your first API call
 

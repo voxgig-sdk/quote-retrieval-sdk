@@ -10,7 +10,7 @@ The Lua SDK for the QuoteRetrieval API — an entity-oriented client using Lua c
 
 ## Install
 ```bash
-luarocks install quote-retrieval-sdk
+luarocks install voxgig-sdk-quote-retrieval
 ```
 
 If the module is not yet published, add the source directory to

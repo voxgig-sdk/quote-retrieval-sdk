@@ -15,9 +15,6 @@ module QuoteRetrievalConfig
       },
       "options" => {
         "base" => "https://quoterism.com",
-        "auth" => {
-          "prefix" => "Bearer",
-        },
         "headers" => {
           "content-type" => "application/json",
         },
@@ -130,6 +127,7 @@ module QuoteRetrievalConfig
                         "orig" => "id",
                         "reqd" => true,
                         "type" => "`$STRING`",
+                        "index$" => 0,
                       },
                     ],
                   },

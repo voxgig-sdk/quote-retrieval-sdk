@@ -1,0 +1,38 @@
+<?php
+declare(strict_types=1);
+
+// Typed models for the QuoteRetrieval SDK.
+//
+// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
+// params (op.<name>.points[].args.params[]). Field/param types come from the
+// canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
+// @voxgig/apidef VALID_CANON). Do not edit by hand.
+//
+// These are documentation-grade value objects (PHP 8 typed properties),
+// registered on the composer classmap autoload. The SDK boundary exchanges
+// assoc-arrays; these classes name the shapes for tooling and typed callers.
+
+/** Quote entity data model. */
+class Quote
+{
+    public array $author;
+    public ?string $created_at = null;
+    public string $id;
+    public string $text;
+}
+
+/** Request payload for Quote#load. */
+class QuoteLoadMatch
+{
+    public string $id;
+}
+
+/** Match filter for Quote#list (any subset of Quote fields). */
+class QuoteListMatch
+{
+    public ?array $author = null;
+    public ?string $created_at = null;
+    public ?string $id = null;
+    public ?string $text = null;
+}
+

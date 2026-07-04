@@ -245,6 +245,9 @@ func (sdk *QuoteRetrievalSDK) Direct(fetchargs map[string]any) (map[string]any, 
 }
 
 
+// Quote returns a Quote entity bound to this client.
+// Idiomatic usage: client.Quote(nil).List(nil, nil) or
+// client.Quote(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *QuoteRetrievalSDK) Quote(data map[string]any) QuoteRetrievalEntity {
 	return NewQuoteEntityFunc(sdk, data)
 }

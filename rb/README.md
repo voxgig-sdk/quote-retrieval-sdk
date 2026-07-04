@@ -28,16 +28,14 @@ require_relative "QuoteRetrieval_sdk"
 client = QuoteRetrievalSDK.new
 ```
 
-### 2. List quotes
+### 2. List quote records
 
 ```ruby
 begin
-  result = client.quote.list
-  if result.is_a?(Array)
-    result.each do |item|
-      d = item.data_get
-      puts "#{d["id"]} #{d["name"]}"
-    end
+  # list returns an Array of Quote records — iterate directly.
+  quotes = client.Quote.list
+  quotes.each do |item|
+    puts "#{item["id"]} #{item["name"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -48,8 +46,9 @@ end
 
 ```ruby
 begin
-  result = client.quote.load({ "id" => "example_id" })
-  puts result
+  # load returns the bare Quote record (raises on error).
+  quote = client.Quote.load({ "id" => "example_id" })
+  puts quote
 rescue => err
   warn "load failed: #{err}"
 end
@@ -96,13 +95,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = QuoteRetrievalSDK.test
+client = QuoteRetrievalSDK.test({
+  "entity" => { "quote" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.quote.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+quote = client.Quote.load({ "id" => "test01" })
+puts quote
 ```
 
 ### Use a custom fetch function
@@ -237,7 +240,7 @@ API path: `/api/quotes`
 
 ### Quote
 
-Create an instance: `const quote = client.quote`
+Create an instance: `quote = client.Quote`
 
 #### Operations
 
@@ -257,14 +260,16 @@ Create an instance: `const quote = client.quote`
 
 #### Example: Load
 
-```ts
-const quote = await client.quote.load({ id: 'quote_id' })
+```ruby
+# load returns the bare Quote record (raises on error).
+quote = client.Quote.load({ "id" => "quote_id" })
 ```
 
 #### Example: List
 
-```ts
-const quotes = await client.quote.list()
+```ruby
+# list returns an Array of Quote records (raises on error).
+quotes = client.Quote.list
 ```
 
 
@@ -339,7 +344,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-quote = client.quote
+quote = client.Quote
 quote.load({ "id" => "example_id" })
 
 # quote.data_get now returns the loaded quote data

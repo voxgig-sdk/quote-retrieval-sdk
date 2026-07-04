@@ -109,7 +109,7 @@ Alias for `QuoteRetrievalSDK.test()`.
 ## QuoteEntity
 
 ```ts
-const quote = client.quote
+const quote = client.Quote()
 ```
 
 ### Fields
@@ -137,7 +137,7 @@ const quote = client.quote
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.quote.list()
+const results = await client.Quote().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -145,7 +145,7 @@ const results = await client.quote.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.quote.load({ id: 'quote_id' })
+const result = await client.Quote().load({ id: 'quote_id' })
 ```
 
 ### Common Methods

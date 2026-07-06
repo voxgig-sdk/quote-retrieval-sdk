@@ -27,7 +27,7 @@ class QuoteLoadMatch
     public string $id;
 }
 
-/** Match filter for Quote#list (any subset of Quote fields). */
+/** Request payload for Quote#list. */
 class QuoteListMatch
 {
     public ?array $author = null;

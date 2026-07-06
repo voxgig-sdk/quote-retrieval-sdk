@@ -16,5 +16,10 @@ export interface QuoteLoadMatch {
   id: string
 }
 
-export type QuoteListMatch = Partial<Quote>
+export interface QuoteListMatch {
+  author?: Record<string, any>
+  created_at?: string
+  id?: string
+  text?: string
+}
 

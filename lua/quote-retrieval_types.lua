@@ -16,6 +16,10 @@
 ---@field id string
 
 ---@class QuoteListMatch
+---@field author? table
+---@field created_at? string
+---@field id? string
+---@field text? string
 
 local M = {}
 

@@ -8,7 +8,7 @@ Complete API reference for the QuoteRetrieval Python SDK.
 ### Constructor
 
 ```python
-from quote-retrieval_sdk import QuoteRetrievalSDK
+from quoteretrieval_sdk import QuoteRetrievalSDK
 
 client = QuoteRetrievalSDK(options)
 ```
@@ -87,28 +87,28 @@ quote = client.Quote()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | ``$OBJECT`` | Yes |  |
-| `created_at` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | Yes |  |
-| `text` | ``$STRING`` | Yes |  |
+| `author` | `dict` | Yes |  |
+| `created_at` | `str` | No |  |
+| `id` | `str` | Yes |  |
+| `text` | `str` | Yes |  |
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | remove |
-| --- | --- | --- | --- | --- | --- |
-| `author` | - | Yes | - | - | - |
-| `created_at` | - | - | - | - | - |
-| `id` | - | - | - | - | - |
-| `text` | - | - | - | - | - |
+| Field | load | list |
+| --- | --- | --- |
+| `author` | - | Yes |
+| `created_at` | - | - |
+| `id` | - | - |
+| `text` | - | - |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Quote().list({})
+results = client.Quote().list()
 for quote in results:
     print(quote)
 ```

@@ -90,19 +90,19 @@ local quote = client:Quote(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | ``$OBJECT`` | Yes |  |
-| `created_at` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | Yes |  |
-| `text` | ``$STRING`` | Yes |  |
+| `author` | `table` | Yes |  |
+| `created_at` | `string` | No |  |
+| `id` | `string` | Yes |  |
+| `text` | `string` | Yes |  |
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | remove |
-| --- | --- | --- | --- | --- | --- |
-| `author` | - | Yes | - | - | - |
-| `created_at` | - | - | - | - | - |
-| `id` | - | - | - | - | - |
-| `text` | - | - | - | - | - |
+| Field | load | list |
+| --- | --- | --- |
+| `author` | - | Yes |
+| `created_at` | - | - |
+| `id` | - | - |
+| `text` | - | - |
 
 ### Operations
 

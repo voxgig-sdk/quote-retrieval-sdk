@@ -15,9 +15,9 @@ main: {
           url: "https://quoterism.com"
         }
       ]
+      summary: "This API retrieves quotes based on a specific ID."
       title: "Quote Retrieval API"
       version: "1.0.0"
+      website: "https://quoterism.com"
     }
   }
-}
-

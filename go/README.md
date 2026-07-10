@@ -60,7 +60,7 @@ func main() {
     }
 
     // Load a single quote — the value is the loaded record.
-    quote, err := client.Quote(nil).Load(map[string]any{"id": "example"}, nil)
+    quote, err := client.Quote(nil).Load(map[string]any{"id": "example_id"}, nil)
     if err != nil {
         panic(err)
     }

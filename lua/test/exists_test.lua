@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- QuoteRetrieval SDK exists test
 
 local sdk = require("quote-retrieval_sdk")
 

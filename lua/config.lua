@@ -39,7 +39,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "created_at",
+            ["name"] = "createdAt",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 1,
@@ -53,10 +53,17 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "text",
+            ["name"] = "name",
             ["req"] = true,
             ["type"] = "`$STRING`",
             ["index$"] = 3,
+          },
+          {
+            ["active"] = true,
+            ["name"] = "text",
+            ["req"] = true,
+            ["type"] = "`$STRING`",
+            ["index$"] = 4,
           },
         },
         ["name"] = "quote",
@@ -89,6 +96,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/quotes",
                 ["parts"] = {
@@ -130,6 +138,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/quotes/{id}",
                 ["parts"] = {
@@ -144,7 +153,7 @@ local function make_config()
                 },
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.author`",
                 },
                 ["index$"] = 0,
               },

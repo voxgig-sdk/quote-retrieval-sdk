@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ QuoteRetrievalUtility.registrar = ->(u) {
   u.prepare_params = QuoteRetrievalUtilities::PrepareParams
   u.prepare_path = QuoteRetrievalUtilities::PreparePath
   u.prepare_query = QuoteRetrievalUtilities::PrepareQuery
+  u.graphql_body = QuoteRetrievalUtilities::GraphqlBody
+  u.graphql_errors = QuoteRetrievalUtilities::GraphqlErrors
   u.result_basic = QuoteRetrievalUtilities::ResultBasic
   u.result_body = QuoteRetrievalUtilities::ResultBody
   u.result_headers = QuoteRetrievalUtilities::ResultHeaders

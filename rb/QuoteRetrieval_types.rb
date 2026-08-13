@@ -13,18 +13,22 @@
 # @!attribute [rw] author
 #   @return [Hash]
 #
-# @!attribute [rw] created_at
+# @!attribute [rw] createdAt
 #   @return [String, nil]
 #
 # @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] name
 #   @return [String]
 #
 # @!attribute [rw] text
 #   @return [String]
 Quote = Struct.new(
   :author,
-  :created_at,
+  :createdAt,
   :id,
+  :name,
   :text,
   keyword_init: true
 )
@@ -43,18 +47,22 @@ QuoteLoadMatch = Struct.new(
 # @!attribute [rw] author
 #   @return [Hash, nil]
 #
-# @!attribute [rw] created_at
+# @!attribute [rw] createdAt
 #   @return [String, nil]
 #
 # @!attribute [rw] id
+#   @return [String, nil]
+#
+# @!attribute [rw] name
 #   @return [String, nil]
 #
 # @!attribute [rw] text
 #   @return [String, nil]
 QuoteListMatch = Struct.new(
   :author,
-  :created_at,
+  :createdAt,
   :id,
+  :name,
   :text,
   keyword_init: true
 )

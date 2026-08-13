@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from quoteretrieval_sdk.utility.voxgig_struct import voxgig_struct as vs
 from quoteretrieval_sdk import QuoteRetrievalSDK
-from core import helpers
+from quoteretrieval_sdk.core import helpers
 from test import runner
 
 
@@ -102,11 +102,11 @@ def _quote_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "QUOTERETRIEVAL_TEST_QUOTE_ENTID": {},
-        "QUOTERETRIEVAL_TEST_LIVE": "FALSE",
+        "QUOTE_RETRIEVAL_TEST_QUOTE_ENTID": {},
+        "QUOTE_RETRIEVAL_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("QUOTERETRIEVAL_TEST_LIVE") == "TRUE"
+    live = env.get("QUOTE_RETRIEVAL_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

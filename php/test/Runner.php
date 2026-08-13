@@ -43,8 +43,8 @@ class QuoteRetrievalTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('QUOTERETRIEVAL_TEST_LIVE');
-        $override = self::getenv('QUOTERETRIEVAL_TEST_OVERRIDE');
+        $live = self::getenv('QUOTE_RETRIEVAL_TEST_LIVE');
+        $override = self::getenv('QUOTE_RETRIEVAL_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class QuoteRetrievalTestRunner
             }
         }
 
-        $explain = self::getenv('QUOTERETRIEVAL_TEST_EXPLAIN');
+        $explain = self::getenv('QUOTE_RETRIEVAL_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['QUOTERETRIEVAL_TEST_EXPLAIN'] = $explain;
+            $m['QUOTE_RETRIEVAL_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;

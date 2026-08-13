@@ -270,8 +270,9 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 | Field | Description |
 | --- | --- |
 | `"author"` |  |
-| `"created_at"` |  |
+| `"createdAt"` |  |
 | `"id"` |  |
+| `"name"` |  |
 | `"text"` |  |
 
 Operations: List, Load.
@@ -299,8 +300,9 @@ Create an instance: `quote := client.Quote(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `author` | `map[string]any` |  |
-| `created_at` | `string` |  |
+| `createdAt` | `string` |  |
 | `id` | `string` |  |
+| `name` | `string` |  |
 | `text` | `string` |  |
 
 #### Example: Load

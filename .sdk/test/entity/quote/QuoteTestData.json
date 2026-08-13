@@ -3,21 +3,24 @@
     "quote": {
       "QUOTE00": {
         "author": {},
-        "created_at": "s29",
+        "createdAt": "s33",
         "id": "QUOTE00",
-        "text": "s2b"
+        "name": "s35",
+        "text": "s36"
       },
       "QUOTE01": {
         "author": {},
-        "created_at": "s51",
+        "createdAt": "s65",
         "id": "QUOTE01",
-        "text": "s53"
+        "name": "s67",
+        "text": "s68"
       },
       "QUOTE02": {
         "author": {},
-        "created_at": "s79",
+        "createdAt": "s97",
         "id": "QUOTE02",
-        "text": "s7b"
+        "name": "s99",
+        "text": "s9a"
       }
     }
   },
@@ -25,8 +28,9 @@
     "quote": {
       "quote_ref01": {
         "author": {},
-        "created_at": "sa1",
-        "text": "sa3"
+        "createdAt": "sc9",
+        "name": "scb",
+        "text": "scc"
       }
     }
   }

@@ -112,11 +112,11 @@ def quote_direct_setup(mockres)
   calls = []
 
   env = Runner.env_override({
-    "QUOTERETRIEVAL_TEST_QUOTE_ENTID" => {},
-    "QUOTERETRIEVAL_TEST_LIVE" => "FALSE",
+    "QUOTE_RETRIEVAL_TEST_QUOTE_ENTID" => {},
+    "QUOTE_RETRIEVAL_TEST_LIVE" => "FALSE",
   })
 
-  live = env["QUOTERETRIEVAL_TEST_LIVE"] == "TRUE"
+  live = env["QUOTE_RETRIEVAL_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {

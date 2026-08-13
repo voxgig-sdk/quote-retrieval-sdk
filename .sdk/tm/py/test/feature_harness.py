@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import QuoteRetrievalControl
-from core.error import QuoteRetrievalError
-from core.result import QuoteRetrievalResult
-from core.spec import QuoteRetrievalSpec
+from projectname_sdk.config import make_config
+from projectname_sdk.features import _make_feature
+from projectname_sdk.core.control import QuoteRetrievalControl
+from projectname_sdk.core.error import QuoteRetrievalError
+from projectname_sdk.core.result import QuoteRetrievalResult
+from projectname_sdk.core.spec import QuoteRetrievalSpec
 
 
 # True when this SDK was generated with the named feature.

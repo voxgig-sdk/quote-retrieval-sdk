@@ -16,11 +16,11 @@
 import pytest
 
 from quoteretrieval_sdk import QuoteRetrievalSDK
-from core.error import QuoteRetrievalError
-from core.result import QuoteRetrievalResult
-from core.response import QuoteRetrievalResponse
-from core.spec import QuoteRetrievalSpec
-from feature.base_feature import QuoteRetrievalBaseFeature
+from quoteretrieval_sdk.core.error import QuoteRetrievalError
+from quoteretrieval_sdk.core.result import QuoteRetrievalResult
+from quoteretrieval_sdk.core.response import QuoteRetrievalResponse
+from quoteretrieval_sdk.core.spec import QuoteRetrievalSpec
+from quoteretrieval_sdk.feature.base_feature import QuoteRetrievalBaseFeature
 
 
 def _client():

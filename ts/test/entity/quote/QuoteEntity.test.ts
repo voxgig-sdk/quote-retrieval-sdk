@@ -26,8 +26,8 @@ import {
 describe('QuoteEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when QUOTERETRIEVAL_TEST_LIVE=TRUE.
-  afterEach(liveDelay('QUOTERETRIEVAL_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when QUOTE_RETRIEVAL_TEST_LIVE=TRUE.
+  afterEach(liveDelay('QUOTE_RETRIEVAL_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = QuoteRetrievalSDK.test()
@@ -63,13 +63,13 @@ describe('QuoteEntity', async () => {
     const quote_ref01_ent = client.Quote()
     const quote_ref01_match: any = {}
 
-    const quote_ref01_list = await quote_ref01_ent.list(quote_ref01_match)
+    const quote_ref01_list = (await quote_ref01_ent.list(quote_ref01_match)).map((e: any) => e.data())
 
 
     // LOAD
     const quote_ref01_match_dt0: any = {}
     quote_ref01_match_dt0.id = quote_ref01_data.id
-    const quote_ref01_data_dt0 = await quote_ref01_ent.load(quote_ref01_match_dt0)
+    const quote_ref01_data_dt0 = (await quote_ref01_ent.load(quote_ref01_match_dt0)).data()
     assert(quote_ref01_data_dt0.id === quote_ref01_data.id)
 
 

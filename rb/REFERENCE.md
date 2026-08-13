@@ -94,8 +94,9 @@ quote = client.Quote
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `author` | `Hash` | Yes |  |
-| `created_at` | `String` | No |  |
+| `createdAt` | `String` | No |  |
 | `id` | `String` | Yes |  |
+| `name` | `String` | Yes |  |
 | `text` | `String` | Yes |  |
 
 ### Field Usage by Operation
@@ -103,8 +104,9 @@ quote = client.Quote
 | Field | load | list |
 | --- | --- | --- |
 | `author` | - | Yes |
-| `created_at` | - | - |
+| `createdAt` | - | - |
 | `id` | - | - |
+| `name` | - | - |
 | `text` | - | - |
 
 ### Operations

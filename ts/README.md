@@ -35,7 +35,9 @@ const client = new QuoteRetrievalSDK()
 
 ### 2. List quote records
 
-`list()` resolves to an array of Quote objects — iterate it directly:
+`list()` resolves to an array of Quote ENTITIES — every operation
+resolves to entities, not raw records. Iterate them directly, and call
+`.data()` on one for the record it holds:
 
 ```ts
 const quotes = await client.Quote().list()
@@ -133,7 +135,8 @@ Create a mock client for unit testing — no server required:
 const client = QuoteRetrievalSDK.test()
 
 const quote = await client.Quote().list()
-// quote is a bare entity populated with mock response data
+// quote is the entity, populated with mock response data
+// — call quote.data() for the record itself
 console.log(quote)
 ```
 
@@ -300,8 +303,9 @@ The `prepare()` method returns:
 | Field | Description |
 | --- | --- |
 | `author` |  |
-| `created_at` |  |
+| `createdAt` |  |
 | `id` |  |
+| `name` |  |
 | `text` |  |
 
 Operations: list, load.
@@ -329,8 +333,9 @@ Create an instance: `const quote = client.Quote()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `author` | `Record<string, any>` |  |
-| `created_at` | `string` |  |
+| `createdAt` | `string` |  |
 | `id` | `string` |  |
+| `name` | `string` |  |
 | `text` | `string` |  |
 
 #### Example: Load

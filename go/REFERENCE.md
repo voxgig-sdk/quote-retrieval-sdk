@@ -99,8 +99,9 @@ fmt.Println(quote.GetName()) // "quote"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `author` | `map[string]any` | Yes |  |
-| `created_at` | `string` | No |  |
+| `createdAt` | `string` | No |  |
 | `id` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
 | `text` | `string` | Yes |  |
 
 ### Field Usage by Operation
@@ -108,8 +109,9 @@ fmt.Println(quote.GetName()) // "quote"
 | Field | load | list |
 | --- | --- | --- |
 | `author` | - | Yes |
-| `created_at` | - | - |
+| `createdAt` | - | - |
 | `id` | - | - |
+| `name` | - | - |
 | `text` | - | - |
 
 ### Operations

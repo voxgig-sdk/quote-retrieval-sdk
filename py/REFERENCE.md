@@ -88,8 +88,9 @@ quote = client.Quote()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `author` | `dict` | Yes |  |
-| `created_at` | `str` | No |  |
+| `createdAt` | `str` | No |  |
 | `id` | `str` | Yes |  |
+| `name` | `str` | Yes |  |
 | `text` | `str` | Yes |  |
 
 ### Field Usage by Operation
@@ -97,8 +98,9 @@ quote = client.Quote()
 | Field | load | list |
 | --- | --- | --- |
 | `author` | - | Yes |
-| `created_at` | - | - |
+| `createdAt` | - | - |
 | `id` | - | - |
+| `name` | - | - |
 | `text` | - | - |
 
 ### Operations

@@ -45,7 +45,7 @@ class QuoteRetrievalConfig
             ],
             [
               'active' => true,
-              'name' => 'created_at',
+              'name' => 'createdAt',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 1,
@@ -59,10 +59,17 @@ class QuoteRetrievalConfig
             ],
             [
               'active' => true,
-              'name' => 'text',
+              'name' => 'name',
               'req' => true,
               'type' => '`$STRING`',
               'index$' => 3,
+            ],
+            [
+              'active' => true,
+              'name' => 'text',
+              'req' => true,
+              'type' => '`$STRING`',
+              'index$' => 4,
             ],
           ],
           'name' => 'quote',
@@ -95,6 +102,7 @@ class QuoteRetrievalConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/quotes',
                   'parts' => [
@@ -136,6 +144,7 @@ class QuoteRetrievalConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/quotes/{id}',
                   'parts' => [
@@ -150,7 +159,7 @@ class QuoteRetrievalConfig
                   ],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.author`',
                   ],
                   'index$' => 0,
                 ],

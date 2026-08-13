@@ -23,6 +23,7 @@ require_once __DIR__ . '/MakeUrl.php';
 require_once __DIR__ . '/Param.php';
 require_once __DIR__ . '/PrepareAuth.php';
 require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
 require_once __DIR__ . '/PrepareHeaders.php';
 require_once __DIR__ . '/PrepareMethod.php';
 require_once __DIR__ . '/PrepareParams.php';
@@ -59,6 +60,8 @@ QuoteRetrievalUtility::setRegistrar(function (QuoteRetrievalUtility $u): void {
     $u->prepare_params = [QuoteRetrievalPrepareParams::class, 'call'];
     $u->prepare_path = [QuoteRetrievalPreparePath::class, 'call'];
     $u->prepare_query = [QuoteRetrievalPrepareQuery::class, 'call'];
+    $u->graphql_body = [QuoteRetrievalGraphql::class, 'body'];
+    $u->graphql_errors = [QuoteRetrievalGraphql::class, 'errors'];
     $u->result_basic = [QuoteRetrievalResultBasic::class, 'call'];
     $u->result_body = [QuoteRetrievalResultBody::class, 'call'];
     $u->result_headers = [QuoteRetrievalResultHeaders::class, 'call'];

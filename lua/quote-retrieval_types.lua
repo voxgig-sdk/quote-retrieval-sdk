@@ -8,8 +8,9 @@
 
 ---@class Quote
 ---@field author table
----@field created_at? string
+---@field createdAt? string
 ---@field id string
+---@field name string
 ---@field text string
 
 ---@class QuoteLoadMatch
@@ -17,8 +18,9 @@
 
 ---@class QuoteListMatch
 ---@field author? table
----@field created_at? string
+---@field createdAt? string
 ---@field id? string
+---@field name? string
 ---@field text? string
 
 local M = {}

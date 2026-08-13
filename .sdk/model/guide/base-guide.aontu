@@ -11,6 +11,7 @@ guide: {
     }
     path: "/api/quotes/{id}": {
       op: load: method: *GET
+      op: load: transform: res: *("`body.author`")|top
     }
   }
 

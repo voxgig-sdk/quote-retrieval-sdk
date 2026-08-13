@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# QuoteRetrieval SDK exists test
 
 import pytest
 from quoteretrieval_sdk import QuoteRetrievalSDK

@@ -7,8 +7,9 @@
 
 export interface Quote {
   author: Record<string, any>
-  created_at?: string
+  createdAt?: string
   id: string
+  name: string
   text: string
 }
 
@@ -18,8 +19,9 @@ export interface QuoteLoadMatch {
 
 export interface QuoteListMatch {
   author?: Record<string, any>
-  created_at?: string
+  createdAt?: string
   id?: string
+  name?: string
   text?: string
 }
 

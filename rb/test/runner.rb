@@ -23,8 +23,8 @@ module QuoteRetrievalTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("QUOTERETRIEVAL_TEST_LIVE")
-    override = getenv("QUOTERETRIEVAL_TEST_OVERRIDE")
+    live = getenv("QUOTE_RETRIEVAL_TEST_LIVE")
+    override = getenv("QUOTE_RETRIEVAL_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module QuoteRetrievalTestRunner
       end
     end
 
-    explain = getenv("QUOTERETRIEVAL_TEST_EXPLAIN")
-    m["QUOTERETRIEVAL_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("QUOTE_RETRIEVAL_TEST_EXPLAIN")
+    m["QUOTE_RETRIEVAL_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

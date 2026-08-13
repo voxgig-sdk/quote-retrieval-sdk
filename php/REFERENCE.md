@@ -93,8 +93,9 @@ $quote = $client->Quote();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `author` | `array` | Yes |  |
-| `created_at` | `string` | No |  |
+| `createdAt` | `string` | No |  |
 | `id` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
 | `text` | `string` | Yes |  |
 
 ### Field Usage by Operation
@@ -102,8 +103,9 @@ $quote = $client->Quote();
 | Field | load | list |
 | --- | --- | --- |
 | `author` | - | Yes |
-| `created_at` | - | - |
+| `createdAt` | - | - |
 | `id` | - | - |
+| `name` | - | - |
 | `text` | - | - |
 
 ### Operations

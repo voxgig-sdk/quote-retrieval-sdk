@@ -21,7 +21,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'QuoteRetrieval',
   }
 
 
@@ -69,7 +69,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "created_at",
+          "name": "createdAt",
           "req": false,
           "type": "`$STRING`",
           "index$": 1
@@ -83,10 +83,17 @@ class Config {
         },
         {
           "active": true,
-          "name": "text",
+          "name": "name",
           "req": true,
           "type": "`$STRING`",
           "index$": 3
+        },
+        {
+          "active": true,
+          "name": "text",
+          "req": true,
+          "type": "`$STRING`",
+          "index$": 4
         }
       ],
       "name": "quote",
@@ -119,6 +126,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/quotes",
               "parts": [
@@ -160,6 +168,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/quotes/{id}",
               "parts": [
@@ -174,7 +183,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.author`"
               },
               "index$": 0
             }

@@ -48,7 +48,7 @@ end
 
 ```ruby
 begin
-  # load returns the bare Quote record (raises on error).
+  # load returns the ENTITY — call data_get for the Quote record (raises on error).
   quote = client.Quote.load({ "id" => "example_id" })
   puts quote
 rescue => err
@@ -134,7 +134,8 @@ client = QuoteRetrievalSDK.test({
   "entity" => { "quote" => { "test01" => { "id" => "test01" } } },
 })
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 quote = client.Quote.list()
 puts quote
 ```
@@ -253,8 +254,9 @@ returns a result `Hash` with these keys:
 | Field | Description |
 | --- | --- |
 | `author` |  |
-| `created_at` |  |
+| `createdAt` |  |
 | `id` |  |
+| `name` |  |
 | `text` |  |
 
 Operations: List, Load.
@@ -282,14 +284,15 @@ Create an instance: `quote = client.Quote`
 | Field | Type | Description |
 | --- | --- | --- |
 | `author` | `Hash` |  |
-| `created_at` | `String` |  |
+| `createdAt` | `String` |  |
 | `id` | `String` |  |
+| `name` | `String` |  |
 | `text` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Quote record (raises on error).
+# load returns the ENTITY — call data_get for the Quote record (raises on error).
 quote = client.Quote.load({ "id" => "quote_id" })
 ```
 

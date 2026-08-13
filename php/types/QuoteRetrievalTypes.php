@@ -16,8 +16,9 @@ declare(strict_types=1);
 class Quote
 {
     public array $author;
-    public ?string $created_at = null;
+    public ?string $createdAt = null;
     public string $id;
+    public string $name;
     public string $text;
 }
 
@@ -31,8 +32,9 @@ class QuoteLoadMatch
 class QuoteListMatch
 {
     public ?array $author = null;
-    public ?string $created_at = null;
+    public ?string $createdAt = null;
     public ?string $id = null;
+    public ?string $name = null;
     public ?string $text = null;
 }
 

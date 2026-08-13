@@ -43,7 +43,7 @@ local quotes, err = client:Quote():list()
 if err then error(err) end
 
 for _, item in ipairs(quotes) do
-  print(item["id"], item["created_at"])
+  print(item["id"], item["createdAt"])
 end
 ```
 
@@ -242,8 +242,9 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 | Field | Description |
 | --- | --- |
 | `author` |  |
-| `created_at` |  |
+| `createdAt` |  |
 | `id` |  |
+| `name` |  |
 | `text` |  |
 
 Operations: List, Load.
@@ -271,8 +272,9 @@ Create an instance: `local quote = client:Quote(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `author` | `table` |  |
-| `created_at` | `string` |  |
+| `createdAt` | `string` |  |
 | `id` | `string` |  |
+| `name` | `string` |  |
 | `text` | `string` |  |
 
 #### Example: Load

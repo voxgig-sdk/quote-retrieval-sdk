@@ -91,8 +91,9 @@ local quote = client:Quote(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `author` | `table` | Yes |  |
-| `created_at` | `string` | No |  |
+| `createdAt` | `string` | No |  |
 | `id` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
 | `text` | `string` | Yes |  |
 
 ### Field Usage by Operation
@@ -100,8 +101,9 @@ local quote = client:Quote(nil)
 | Field | load | list |
 | --- | --- | --- |
 | `author` | - | Yes |
-| `created_at` | - | - |
+| `createdAt` | - | - |
 | `id` | - | - |
+| `name` | - | - |
 | `text` | - | - |
 
 ### Operations

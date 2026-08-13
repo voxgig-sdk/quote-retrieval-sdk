@@ -17,12 +17,17 @@ main: kit: entity: quote: {
       type: "`$OBJECT`"
     }
     {
-      name: "created_at"
+      name: "createdAt"
       req: false
       type: "`$STRING`"
     }
     {
       name: "id"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "name"
       req: true
       type: "`$STRING`"
     }
@@ -113,7 +118,7 @@ main: kit: entity: quote: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.author`"
           }
         }
       ]

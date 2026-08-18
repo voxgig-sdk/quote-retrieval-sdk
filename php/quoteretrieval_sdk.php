@@ -40,7 +40,7 @@ class QuoteRetrievalSDK
         $utility = new QuoteRetrievalUtility();
         $this->_utility = $utility;
 
-        $config = QuoteRetrievalConfig::make_config();
+        $config = QuoteRetrievalConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

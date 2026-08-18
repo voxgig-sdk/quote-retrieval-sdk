@@ -28,7 +28,7 @@ class QuoteRetrievalSDK
     utility = QuoteRetrievalUtility.new
     @_utility = utility
 
-    config = QuoteRetrievalConfig.make_config
+    config = QuoteRetrievalConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

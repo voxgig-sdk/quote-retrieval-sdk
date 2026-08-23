@@ -94,10 +94,10 @@ quote = client.Quote
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `author` | `Hash` | Yes |  |
-| `createdAt` | `String` | No |  |
-| `id` | `String` | Yes |  |
-| `name` | `String` | Yes |  |
-| `text` | `String` | Yes |  |
+| `createdAt` | `String` | No | Timestamp when the quote was created |
+| `id` | `String` | Yes | Unique identifier for the author |
+| `name` | `String` | Yes | Name of the author |
+| `text` | `String` | Yes | The quote text |
 
 ### Field Usage by Operation
 

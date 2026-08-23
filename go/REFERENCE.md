@@ -99,10 +99,10 @@ fmt.Println(quote.GetName()) // "quote"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `author` | `map[string]any` | Yes |  |
-| `createdAt` | `string` | No |  |
-| `id` | `string` | Yes |  |
-| `name` | `string` | Yes |  |
-| `text` | `string` | Yes |  |
+| `createdAt` | `string` | No | Timestamp when the quote was created |
+| `id` | `string` | Yes | Unique identifier for the author |
+| `name` | `string` | Yes | Name of the author |
+| `text` | `string` | Yes | The quote text |
 
 ### Field Usage by Operation
 

@@ -6,7 +6,7 @@ The Golang SDK for the QuoteRetrieval API — an entity-oriented client using st
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.Quote(nil)` — each with the same small set of operations (`List`, `Load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
 
 
@@ -270,10 +270,10 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 | Field | Description |
 | --- | --- |
 | `"author"` |  |
-| `"createdAt"` |  |
-| `"id"` |  |
-| `"name"` |  |
-| `"text"` |  |
+| `"createdAt"` | Timestamp when the quote was created |
+| `"id"` | Unique identifier for the author |
+| `"name"` | Name of the author |
+| `"text"` | The quote text |
 
 Operations: List, Load.
 
@@ -300,10 +300,10 @@ Create an instance: `quote := client.Quote(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `author` | `map[string]any` |  |
-| `createdAt` | `string` |  |
-| `id` | `string` |  |
-| `name` | `string` |  |
-| `text` | `string` |  |
+| `createdAt` | `string` | Timestamp when the quote was created |
+| `id` | `string` | Unique identifier for the author |
+| `name` | `string` | Name of the author |
+| `text` | `string` | The quote text |
 
 #### Example: Load
 

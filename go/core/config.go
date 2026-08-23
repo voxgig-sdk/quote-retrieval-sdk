@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "QuoteRetrieval",
+			"slug": "quote-retrieval",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -43,21 +46,25 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "createdAt",
+						"short": "Timestamp when the quote was created",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
 						"req": true,
+						"short": "Unique identifier for the author",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "name",
 						"req": true,
+						"short": "Name of the author",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "text",
 						"req": true,
+						"short": "The quote text",
 						"type": "`$STRING`",
 					},
 				},

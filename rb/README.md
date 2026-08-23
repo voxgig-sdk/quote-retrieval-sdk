@@ -254,10 +254,10 @@ returns a result `Hash` with these keys:
 | Field | Description |
 | --- | --- |
 | `author` |  |
-| `createdAt` |  |
-| `id` |  |
-| `name` |  |
-| `text` |  |
+| `createdAt` | Timestamp when the quote was created |
+| `id` | Unique identifier for the author |
+| `name` | Name of the author |
+| `text` | The quote text |
 
 Operations: List, Load.
 
@@ -284,10 +284,10 @@ Create an instance: `quote = client.Quote`
 | Field | Type | Description |
 | --- | --- | --- |
 | `author` | `Hash` |  |
-| `createdAt` | `String` |  |
-| `id` | `String` |  |
-| `name` | `String` |  |
-| `text` | `String` |  |
+| `createdAt` | `String` | Timestamp when the quote was created |
+| `id` | `String` | Unique identifier for the author |
+| `name` | `String` | Name of the author |
+| `text` | `String` | The quote text |
 
 #### Example: Load
 

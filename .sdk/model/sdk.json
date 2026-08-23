@@ -48,24 +48,28 @@
               "active": true,
               "name": "createdAt",
               "req": false,
+              "short": "Timestamp when the quote was created",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": true,
+              "short": "Unique identifier for the author",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "name",
               "req": true,
+              "short": "Name of the author",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "text",
               "req": true,
+              "short": "The quote text",
               "type": "`$STRING`"
             }
           ],

@@ -257,10 +257,10 @@ On error, `ok` is `False` and `err` contains the error value.
 | Field | Description |
 | --- | --- |
 | `author` |  |
-| `createdAt` |  |
-| `id` |  |
-| `name` |  |
-| `text` |  |
+| `createdAt` | Timestamp when the quote was created |
+| `id` | Unique identifier for the author |
+| `name` | Name of the author |
+| `text` | The quote text |
 
 Operations: List, Load.
 
@@ -287,10 +287,10 @@ Create an instance: `quote = client.Quote()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `author` | `dict` |  |
-| `createdAt` | `str` |  |
-| `id` | `str` |  |
-| `name` | `str` |  |
-| `text` | `str` |  |
+| `createdAt` | `str` | Timestamp when the quote was created |
+| `id` | `str` | Unique identifier for the author |
+| `name` | `str` | Name of the author |
+| `text` | `str` | The quote text |
 
 #### Example: Load
 

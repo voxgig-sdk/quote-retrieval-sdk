@@ -28,6 +28,9 @@ def make_config():
     return {
         "main": {
             "name": "QuoteRetrieval",
+            "slug": "quote-retrieval",
+            "version": "0.0.1",
+            "target": "py",
         },
         "feature": {
             "test": {
@@ -60,21 +63,25 @@ def make_config():
           },
           {
             "name": "createdAt",
+            "short": "Timestamp when the quote was created",
             "type": "`$STRING`",
           },
           {
             "name": "id",
             "req": True,
+            "short": "Unique identifier for the author",
             "type": "`$STRING`",
           },
           {
             "name": "name",
             "req": True,
+            "short": "Name of the author",
             "type": "`$STRING`",
           },
           {
             "name": "text",
             "req": True,
+            "short": "The quote text",
             "type": "`$STRING`",
           },
         ],

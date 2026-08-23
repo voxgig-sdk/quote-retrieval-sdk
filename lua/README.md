@@ -242,10 +242,10 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 | Field | Description |
 | --- | --- |
 | `author` |  |
-| `createdAt` |  |
-| `id` |  |
-| `name` |  |
-| `text` |  |
+| `createdAt` | Timestamp when the quote was created |
+| `id` | Unique identifier for the author |
+| `name` | Name of the author |
+| `text` | The quote text |
 
 Operations: List, Load.
 
@@ -272,10 +272,10 @@ Create an instance: `local quote = client:Quote(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `author` | `table` |  |
-| `createdAt` | `string` |  |
-| `id` | `string` |  |
-| `name` | `string` |  |
-| `text` | `string` |  |
+| `createdAt` | `string` | Timestamp when the quote was created |
+| `id` | `string` | Unique identifier for the author |
+| `name` | `string` | Name of the author |
+| `text` | `string` | The quote text |
 
 #### Example: Load
 

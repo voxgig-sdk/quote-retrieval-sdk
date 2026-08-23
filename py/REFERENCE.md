@@ -88,10 +88,10 @@ quote = client.Quote()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `author` | `dict` | Yes |  |
-| `createdAt` | `str` | No |  |
-| `id` | `str` | Yes |  |
-| `name` | `str` | Yes |  |
-| `text` | `str` | Yes |  |
+| `createdAt` | `str` | No | Timestamp when the quote was created |
+| `id` | `str` | Yes | Unique identifier for the author |
+| `name` | `str` | Yes | Name of the author |
+| `text` | `str` | Yes | The quote text |
 
 ### Field Usage by Operation
 

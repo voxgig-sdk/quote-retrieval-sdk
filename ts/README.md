@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -303,10 +303,10 @@ The `prepare()` method returns:
 | Field | Description |
 | --- | --- |
 | `author` |  |
-| `createdAt` |  |
-| `id` |  |
-| `name` |  |
-| `text` |  |
+| `createdAt` | Timestamp when the quote was created |
+| `id` | Unique identifier for the author |
+| `name` | Name of the author |
+| `text` | The quote text |
 
 Operations: list, load.
 
@@ -333,10 +333,10 @@ Create an instance: `const quote = client.Quote()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `author` | `Record<string, any>` |  |
-| `createdAt` | `string` |  |
-| `id` | `string` |  |
-| `name` | `string` |  |
-| `text` | `string` |  |
+| `createdAt` | `string` | Timestamp when the quote was created |
+| `id` | `string` | Unique identifier for the author |
+| `name` | `string` | Name of the author |
+| `text` | `string` | The quote text |
 
 #### Example: Load
 

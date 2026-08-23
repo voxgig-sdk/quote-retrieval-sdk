@@ -19,9 +19,20 @@ class Config {
     return fi
   }
 
+  // False for a feature added at runtime via options.extend (station's
+  // adopt path) - the constructor uses this to skip makeFeature for names
+  // no generated class backs.
+  hasFeature(this: any, fn: string) {
+    return null != FEATURE_CLASS[fn]
+  }
+
 
   main = {
     name: 'QuoteRetrieval',
+        slug: "quote-retrieval",
+    version: "0.0.1",
+    target: "ts",
+
   }
 
 
@@ -66,21 +77,25 @@ class Config {
         },
         {
           "name": "createdAt",
+          "short": "Timestamp when the quote was created",
           "type": "`$STRING`"
         },
         {
           "name": "id",
           "req": true,
+          "short": "Unique identifier for the author",
           "type": "`$STRING`"
         },
         {
           "name": "name",
           "req": true,
+          "short": "Name of the author",
           "type": "`$STRING`"
         },
         {
           "name": "text",
           "req": true,
+          "short": "The quote text",
           "type": "`$STRING`"
         }
       ],

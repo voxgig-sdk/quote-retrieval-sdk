@@ -7,6 +7,9 @@ local function make_config()
   return {
     main = {
       name = "QuoteRetrieval",
+      slug = "quote-retrieval",
+      version = "0.0.1",
+      target = "lua",
     },
     feature = {
       ["test"] = {
@@ -39,21 +42,25 @@ local function make_config()
           },
           {
             ["name"] = "createdAt",
+            ["short"] = "Timestamp when the quote was created",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "id",
             ["req"] = true,
+            ["short"] = "Unique identifier for the author",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "name",
             ["req"] = true,
+            ["short"] = "Name of the author",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "text",
             ["req"] = true,
+            ["short"] = "The quote text",
             ["type"] = "`$STRING`",
           },
         },

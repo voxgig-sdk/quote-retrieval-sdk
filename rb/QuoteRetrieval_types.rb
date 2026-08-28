@@ -44,26 +44,14 @@ QuoteLoadMatch = Struct.new(
 
 # Request payload for Quote#list.
 #
-# @!attribute [rw] author
-#   @return [Hash, nil]
+# @!attribute [rw] limit
+#   @return [Integer, nil]
 #
-# @!attribute [rw] createdAt
-#   @return [String, nil]
-#
-# @!attribute [rw] id
-#   @return [String, nil]
-#
-# @!attribute [rw] name
-#   @return [String, nil]
-#
-# @!attribute [rw] text
-#   @return [String, nil]
+# @!attribute [rw] page
+#   @return [Integer, nil]
 QuoteListMatch = Struct.new(
-  :author,
-  :createdAt,
-  :id,
-  :name,
-  :text,
+  :limit,
+  :page,
   keyword_init: true
 )
 

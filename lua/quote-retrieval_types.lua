@@ -17,11 +17,8 @@
 ---@field id string
 
 ---@class QuoteListMatch
----@field author? table
----@field createdAt? string
----@field id? string
----@field name? string
----@field text? string
+---@field limit? number
+---@field page? number
 
 local M = {}
 

@@ -31,10 +31,7 @@ class QuoteLoadMatch
 /** Request payload for Quote#list. */
 class QuoteListMatch
 {
-    public ?array $author = null;
-    public ?string $createdAt = null;
-    public ?string $id = null;
-    public ?string $name = null;
-    public ?string $text = null;
+    public ?int $limit = null;
+    public ?int $page = null;
 }
 

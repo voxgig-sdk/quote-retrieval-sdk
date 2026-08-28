@@ -32,8 +32,5 @@ class QuoteLoadMatch(TypedDict):
 
 
 class QuoteListMatch(TypedDict, total=False):
-    author: dict
-    createdAt: str
-    id: str
-    name: str
-    text: str
+    limit: int
+    page: int

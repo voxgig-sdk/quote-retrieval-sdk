@@ -18,10 +18,7 @@ export interface QuoteLoadMatch {
 }
 
 export interface QuoteListMatch {
-  author?: Record<string, any>
-  createdAt?: string
-  id?: string
-  name?: string
-  text?: string
+  limit?: number
+  page?: number
 }
 

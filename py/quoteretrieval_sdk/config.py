@@ -1,6 +1,14 @@
 # QuoteRetrieval SDK configuration
 
 
+# The sekreto plugin DEFINITIONS the model selected per feature, imported
+# above by name from the modules the catalogue's active `plugin.def`
+# entries declare. Handed to each feature (secrets builds its Sekreto
+# with them): a provider kind not listed here is unknown to that SDK.
+FEATURE_PLUGINS = {
+}
+
+
 _shared_config = None
 
 
@@ -63,6 +71,7 @@ def make_config():
             "type": "`$OBJECT`",
           },
           {
+            "format": "date-time",
             "name": "createdAt",
             "short": "Timestamp when the quote was created",
             "type": "`$STRING`",
@@ -86,6 +95,10 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "quote",
         "op": {
           "list": {
@@ -114,9 +127,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/quotes",
-                "parts": [
-                  "api",
-                  "quotes",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "quotes",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -128,6 +145,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "quotes",
+                ],
               },
             ],
           },
@@ -151,10 +172,16 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/quotes/{id}",
-                "parts": [
-                  "api",
-                  "quotes",
-                  "{id}",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "quotes",
+                  },
+                  {
+                    "var": "id",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -165,6 +192,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.author`",
                 },
+                "parts": [
+                  "api",
+                  "quotes",
+                  "{id}",
+                ],
               },
             ],
           },

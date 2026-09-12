@@ -17,6 +17,7 @@ main: kit: entity: quote: {
       type: "`$OBJECT`"
     }
     {
+      format: "date-time"
       name: "createdAt"
       req: false
       short: "Timestamp when the quote was created"
@@ -75,9 +76,13 @@ main: kit: entity: quote: {
           }
           method: "GET"
           orig: "/api/quotes"
-          parts: [
-            "api"
-            "quotes"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "quotes"
+            }
           ]
           select: {
             exist: [
@@ -110,10 +115,16 @@ main: kit: entity: quote: {
           }
           method: "GET"
           orig: "/api/quotes/{id}"
-          parts: [
-            "api"
-            "quotes"
-            "{id}"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "quotes"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

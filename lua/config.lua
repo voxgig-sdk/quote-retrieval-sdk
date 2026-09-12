@@ -42,6 +42,7 @@ local function make_config()
             ["type"] = "`$OBJECT`",
           },
           {
+            ["format"] = "date-time",
             ["name"] = "createdAt",
             ["short"] = "Timestamp when the quote was created",
             ["type"] = "`$STRING`",
@@ -64,6 +65,10 @@ local function make_config()
             ["short"] = "The quote text",
             ["type"] = "`$STRING`",
           },
+        },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
         },
         ["name"] = "quote",
         ["op"] = {
@@ -93,9 +98,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/quotes",
-                ["parts"] = {
-                  "api",
-                  "quotes",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "quotes",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -106,6 +115,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "quotes",
                 },
               },
             },
@@ -130,10 +143,16 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/quotes/{id}",
-                ["parts"] = {
-                  "api",
-                  "quotes",
-                  "{id}",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "quotes",
+                  },
+                  {
+                    ["var"] = "id",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -143,6 +162,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.author`",
+                },
+                ["parts"] = {
+                  "api",
+                  "quotes",
+                  "{id}",
                 },
               },
             },

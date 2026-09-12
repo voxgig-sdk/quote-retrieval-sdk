@@ -68,6 +68,7 @@ class QuoteRetrievalConfig
               'type' => '`$OBJECT`',
             ],
             [
+              'format' => 'date-time',
               'name' => 'createdAt',
               'short' => 'Timestamp when the quote was created',
               'type' => '`$STRING`',
@@ -90,6 +91,10 @@ class QuoteRetrievalConfig
               'short' => 'The quote text',
               'type' => '`$STRING`',
             ],
+          ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
           ],
           'name' => 'quote',
           'op' => [
@@ -119,9 +124,13 @@ class QuoteRetrievalConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/quotes',
-                  'parts' => [
-                    'api',
-                    'quotes',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'quotes',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -132,6 +141,10 @@ class QuoteRetrievalConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'quotes',
                   ],
                 ],
               ],
@@ -156,10 +169,16 @@ class QuoteRetrievalConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/quotes/{id}',
-                  'parts' => [
-                    'api',
-                    'quotes',
-                    '{id}',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'quotes',
+                    ],
+                    [
+                      'var' => 'id',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -169,6 +188,11 @@ class QuoteRetrievalConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.author`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'quotes',
+                    '{id}',
                   ],
                 ],
               ],

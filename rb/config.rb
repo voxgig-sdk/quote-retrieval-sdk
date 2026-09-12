@@ -54,6 +54,7 @@ module QuoteRetrievalConfig
               "type" => "`$OBJECT`",
             },
             {
+              "format" => "date-time",
               "name" => "createdAt",
               "short" => "Timestamp when the quote was created",
               "type" => "`$STRING`",
@@ -77,6 +78,10 @@ module QuoteRetrievalConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "quote",
           "op" => {
             "list" => {
@@ -105,9 +110,13 @@ module QuoteRetrievalConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/quotes",
-                  "parts" => [
-                    "api",
-                    "quotes",
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "quotes",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -119,6 +128,10 @@ module QuoteRetrievalConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "api",
+                    "quotes",
+                  ],
                 },
               ],
             },
@@ -142,10 +155,16 @@ module QuoteRetrievalConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/quotes/{id}",
-                  "parts" => [
-                    "api",
-                    "quotes",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "quotes",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -156,6 +175,11 @@ module QuoteRetrievalConfig
                     "req" => "`reqdata`",
                     "res" => "`body.author`",
                   },
+                  "parts" => [
+                    "api",
+                    "quotes",
+                    "{id}",
+                  ],
                 },
               ],
             },

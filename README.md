@@ -105,7 +105,7 @@ local results, err = client:Quote():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/quote-retrieval` | publish pending — [install from git tag](https://github.com/voxgig-sdk/quote-retrieval-sdk/releases) |
+| TypeScript | `@voxgig-sdk/quote-retrieval-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/quote-retrieval-sdk/releases) |
 | Python | `voxgig-sdk-quote-retrieval` | publish pending — [install from git tag](https://github.com/voxgig-sdk/quote-retrieval-sdk/releases) |
 | PHP | `voxgig-sdk/quote-retrieval` | publish pending — [install from git tag](https://github.com/voxgig-sdk/quote-retrieval-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/quote-retrieval-sdk/go` | `go get github.com/voxgig-sdk/quote-retrieval-sdk/go@latest` |
@@ -119,7 +119,7 @@ local results, err = client:Quote():list()
 ### TypeScript
 
 ```ts
-import { QuoteRetrievalSDK } from '@voxgig-sdk/quote-retrieval'
+import { QuoteRetrievalSDK } from '@voxgig-sdk/quote-retrieval-sdk'
 
 const client = new QuoteRetrievalSDK()
 

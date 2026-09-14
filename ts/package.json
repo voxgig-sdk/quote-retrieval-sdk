@@ -1,5 +1,5 @@
 {
-  "name": "@voxgig-sdk/quote-retrieval",
+  "name": "@voxgig-sdk/quote-retrieval-sdk",
   "version": "0.0.1",
   "description": "Unofficial generated TypeScript SDK for the Quote Retrieval public API. Not affiliated with or endorsed by the upstream API provider.",
   "keywords": [

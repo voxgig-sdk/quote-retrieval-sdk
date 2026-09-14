@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { QuoteRetrievalSDK } from '@voxgig-sdk/quote-retrieval'
+import { QuoteRetrievalSDK } from '@voxgig-sdk/quote-retrieval-sdk'
 
 const client = new QuoteRetrievalSDK()
 ```
@@ -433,7 +433,7 @@ quote-retrieval/
 Import the SDK from the package root:
 
 ```ts
-import { QuoteRetrievalSDK } from '@voxgig-sdk/quote-retrieval'
+import { QuoteRetrievalSDK } from '@voxgig-sdk/quote-retrieval-sdk'
 ```
 
 ### Entity state

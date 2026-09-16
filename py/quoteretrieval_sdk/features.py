@@ -1,12 +1,18 @@
 # QuoteRetrieval SDK feature factory
 
 from quoteretrieval_sdk.feature.base_feature import QuoteRetrievalBaseFeature
+from quoteretrieval_sdk.feature.ratelimit_feature import QuoteRetrievalRatelimitFeature
+from quoteretrieval_sdk.feature.retry_feature import QuoteRetrievalRetryFeature
 from quoteretrieval_sdk.feature.test_feature import QuoteRetrievalTestFeature
+from quoteretrieval_sdk.feature.timeout_feature import QuoteRetrievalTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: QuoteRetrievalBaseFeature(),
+    "ratelimit": lambda: QuoteRetrievalRatelimitFeature(),
+    "retry": lambda: QuoteRetrievalRetryFeature(),
     "test": lambda: QuoteRetrievalTestFeature(),
+    "timeout": lambda: QuoteRetrievalTimeoutFeature(),
 }
 
 

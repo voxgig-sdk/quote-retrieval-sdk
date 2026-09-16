@@ -33,5 +33,324 @@
         "text": "scc"
       }
     }
+  },
+  "requests": {
+    "GET /api/quotes": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getQuotes",
+        "parameters": [
+          {
+            "description": "Page number (0-indexed). Defaults to 0.",
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Number of quotes per page (1-100). Defaults to 12.",
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 12,
+              "maximum": 100,
+              "minimum": 1,
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "data": [
+                    {
+                      "author": {
+                        "id": "xyz789",
+                        "name": "Steve Jobs",
+                        "slug": "steve-jobs"
+                      },
+                      "createdAt": "2024-01-15T10:30:00.000Z",
+                      "id": "abc123",
+                      "text": "The only way to do great work is to love what you do."
+                    }
+                  ],
+                  "pagination": {
+                    "hasNextPage": true,
+                    "hasPreviousPage": false,
+                    "limit": 12,
+                    "page": 0,
+                    "totalCount": 1000,
+                    "totalPages": 84
+                  }
+                },
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "allOf": [
+                          {
+                            "properties": {
+                              "author": {
+                                "properties": {
+                                  "id": {
+                                    "description": "Unique identifier for the author",
+                                    "type": "string"
+                                  },
+                                  "name": {
+                                    "description": "Name of the author",
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "id",
+                                  "name"
+                                ],
+                                "type": "object"
+                              },
+                              "id": {
+                                "description": "Unique identifier for the quote",
+                                "type": "string"
+                              },
+                              "text": {
+                                "description": "The quote text",
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "text",
+                              "author"
+                            ],
+                            "type": "object"
+                          },
+                          {
+                            "properties": {
+                              "author": {
+                                "allOf": [
+                                  {
+                                    "properties": {
+                                      "id": {
+                                        "description": "Unique identifier for the author",
+                                        "type": "string"
+                                      },
+                                      "name": {
+                                        "description": "Name of the author",
+                                        "type": "string"
+                                      }
+                                    },
+                                    "required": [
+                                      "id",
+                                      "name"
+                                    ],
+                                    "type": "object"
+                                  },
+                                  {
+                                    "properties": {
+                                      "slug": {
+                                        "description": "URL-friendly version of the author's name",
+                                        "type": "string"
+                                      }
+                                    },
+                                    "type": "object"
+                                  }
+                                ]
+                              },
+                              "createdAt": {
+                                "description": "Timestamp when the quote was created",
+                                "format": "date-time",
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          }
+                        ]
+                      },
+                      "type": "array"
+                    },
+                    "pagination": {
+                      "properties": {
+                        "hasNextPage": {
+                          "description": "Indicates if there is a next page",
+                          "type": "boolean"
+                        },
+                        "hasPreviousPage": {
+                          "description": "Indicates if there is a previous page",
+                          "type": "boolean"
+                        },
+                        "limit": {
+                          "description": "Number of items per page",
+                          "type": "integer"
+                        },
+                        "page": {
+                          "description": "Current page number (0-indexed)",
+                          "type": "integer"
+                        },
+                        "totalCount": {
+                          "description": "Total number of quotes available",
+                          "type": "integer"
+                        },
+                        "totalPages": {
+                          "description": "Total number of pages",
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "page",
+                        "limit",
+                        "totalCount",
+                        "totalPages",
+                        "hasNextPage",
+                        "hasPreviousPage"
+                      ],
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Success"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "Invalid request"
+                },
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "description": "Error message",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Not Found"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /api/quotes/{id}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getQuoteById",
+        "parameters": [
+          {
+            "description": "The quote ID, or a special value: 'random' for a random quote, 'quote-of-the-day' for the daily quote.",
+            "examples": {
+              "quoteOfTheDay": {
+                "summary": "Quote of the day",
+                "value": "quote-of-the-day"
+              },
+              "random": {
+                "summary": "Random quote",
+                "value": "random"
+              },
+              "specificId": {
+                "summary": "Specific quote ID",
+                "value": "abc123"
+              }
+            },
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "author": {
+                    "id": "xyz789",
+                    "name": "Steve Jobs"
+                  },
+                  "id": "abc123",
+                  "text": "The only way to do great work is to love what you do."
+                },
+                "schema": {
+                  "properties": {
+                    "author": {
+                      "properties": {
+                        "id": {
+                          "description": "Unique identifier for the author",
+                          "type": "string"
+                        },
+                        "name": {
+                          "description": "Name of the author",
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "name"
+                      ],
+                      "type": "object"
+                    },
+                    "id": {
+                      "description": "Unique identifier for the quote",
+                      "type": "string"
+                    },
+                    "text": {
+                      "description": "The quote text",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "text",
+                    "author"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Success"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "Quote not found"
+                },
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "description": "Error message",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Quote not found"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

@@ -5,6 +5,8 @@ import * as Fs from 'node:fs'
 
 import { test, describe, afterEach } from 'node:test'
 import assert from 'node:assert'
+import { createLiveTransport } from '../../live-runner'
+import { runLiveEntity } from '../../live-entity'
 
 
 import { QuoteRetrievalSDK, BaseFeature, stdutil } from '../../..'
@@ -47,16 +49,13 @@ describe('QuoteEntity', async () => {
 
     const live = 'TRUE' === process.env.QUOTE_RETRIEVAL_TEST_LIVE
     for (const op of ['list', 'load']) {
-      if (maybeSkipControl(t, 'entityOp', 'quote.' + op, live)) return
+      if (!live && maybeSkipControl(t, 'entityOp', 'quote.' + op, live)) return
     }
 
+    
     const setup = basicSetup()
-    // The basic flow consumes synthetic IDs and field values from the
-    // fixture (entity TestData.json). Those don't exist on the live API.
-    // Skip live runs unless the user provided a real ENTID env override.
-    if (setup.syntheticOnly) {
-      t.skip('live entity test uses synthetic IDs from fixture — set QUOTE_RETRIEVAL_TEST_QUOTE_ENTID JSON to run live')
-      return
+    if (setup.live) {
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[{"active":true,"name":"author","op":{"list":{"req":false,"type":"`$ANY`"}},"req":true,"type":"`$OBJECT`","index$":0},{"active":true,"format":"date-time","name":"createdAt","req":false,"short":"Timestamp when the quote was created","type":"`$STRING`","index$":1},{"active":true,"name":"id","req":true,"short":"Unique identifier for the author","type":"`$STRING`","index$":2},{"active":true,"name":"name","req":true,"short":"Name of the author","type":"`$STRING`","index$":3},{"active":true,"name":"text","req":true,"short":"The quote text","type":"`$STRING`","index$":4}],"id":{"field":"id","name":"id"},"name":"quote","op":{"list":{"input":"data","name":"list","points":[{"active":true,"args":{"query":[{"active":true,"example":12,"kind":"query","name":"limit","orig":"limit","reqd":false,"type":"`$INTEGER`","index$":0},{"active":true,"example":0,"kind":"query","name":"page","orig":"page","reqd":false,"type":"`$INTEGER`","index$":1}]},"contract":{"id":"GET /api/quotes","json":"{\"operationId\":\"getQuotes\",\"parameters\":[{\"description\":\"Page number (0-indexed). Defaults to 0.\",\"in\":\"query\",\"name\":\"page\",\"required\":false,\"schema\":{\"default\":0,\"minimum\":0,\"type\":\"integer\"}},{\"description\":\"Number of quotes per page (1-100). Defaults to 12.\",\"in\":\"query\",\"name\":\"limit\",\"required\":false,\"schema\":{\"default\":12,\"maximum\":100,\"minimum\":1,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":{\"data\":[{\"author\":{\"id\":\"xyz789\",\"name\":\"Steve Jobs\",\"slug\":\"steve-jobs\"},\"createdAt\":\"2024-01-15T10:30:00.000Z\",\"id\":\"abc123\",\"text\":\"The only way to do great work is to love what you do.\"}],\"pagination\":{\"hasNextPage\":true,\"hasPreviousPage\":false,\"limit\":12,\"page\":0,\"totalCount\":1000,\"totalPages\":84}},\"schema\":{\"properties\":{\"data\":{\"items\":{\"allOf\":[{\"properties\":{\"author\":{\"properties\":{\"id\":{\"description\":\"Unique identifier for the author\",\"type\":\"string\"},\"name\":{\"description\":\"Name of the author\",\"type\":\"string\"}},\"required\":[\"id\",\"name\"],\"type\":\"object\"},\"id\":{\"description\":\"Unique identifier for the quote\",\"type\":\"string\"},\"text\":{\"description\":\"The quote text\",\"type\":\"string\"}},\"required\":[\"id\",\"text\",\"author\"],\"type\":\"object\"},{\"properties\":{\"author\":{\"allOf\":[{\"properties\":{\"id\":{\"description\":\"Unique identifier for the author\",\"type\":\"string\"},\"name\":{\"description\":\"Name of the author\",\"type\":\"string\"}},\"required\":[\"id\",\"name\"],\"type\":\"object\"},{\"properties\":{\"slug\":{\"description\":\"URL-friendly version of the author's name\",\"type\":\"string\"}},\"type\":\"object\"}]},\"createdAt\":{\"description\":\"Timestamp when the quote was created\",\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"}]},\"type\":\"array\"},\"pagination\":{\"properties\":{\"hasNextPage\":{\"description\":\"Indicates if there is a next page\",\"type\":\"boolean\"},\"hasPreviousPage\":{\"description\":\"Indicates if there is a previous page\",\"type\":\"boolean\"},\"limit\":{\"description\":\"Number of items per page\",\"type\":\"integer\"},\"page\":{\"description\":\"Current page number (0-indexed)\",\"type\":\"integer\"},\"totalCount\":{\"description\":\"Total number of quotes available\",\"type\":\"integer\"},\"totalPages\":{\"description\":\"Total number of pages\",\"type\":\"integer\"}},\"required\":[\"page\",\"limit\",\"totalCount\",\"totalPages\",\"hasNextPage\",\"hasPreviousPage\"],\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Success\"},\"404\":{\"content\":{\"application/json\":{\"example\":{\"error\":\"Invalid request\"},\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message\",\"type\":\"string\"}},\"required\":[\"error\"],\"type\":\"object\"}}},\"description\":\"Not Found\"}},\"securitySource\":\"unspecified\"}","source":"openapi3","version":1},"kind":"http","method":"GET","orig":"/api/quotes","segments":[{"lit":"api"},{"lit":"quotes"}],"select":{"exist":["limit","page"]},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"list"},"load":{"input":"data","name":"load","points":[{"active":true,"args":{"params":[{"active":true,"example":"abc123","kind":"param","name":"id","orig":"id","reqd":true,"type":"`$STRING`","index$":0}]},"contract":{"id":"GET /api/quotes/{id}","json":"{\"operationId\":\"getQuoteById\",\"parameters\":[{\"description\":\"The quote ID, or a special value: 'random' for a random quote, 'quote-of-the-day' for the daily quote.\",\"examples\":{\"quoteOfTheDay\":{\"summary\":\"Quote of the day\",\"value\":\"quote-of-the-day\"},\"random\":{\"summary\":\"Random quote\",\"value\":\"random\"},\"specificId\":{\"summary\":\"Specific quote ID\",\"value\":\"abc123\"}},\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":{\"author\":{\"id\":\"xyz789\",\"name\":\"Steve Jobs\"},\"id\":\"abc123\",\"text\":\"The only way to do great work is to love what you do.\"},\"schema\":{\"properties\":{\"author\":{\"properties\":{\"id\":{\"description\":\"Unique identifier for the author\",\"type\":\"string\"},\"name\":{\"description\":\"Name of the author\",\"type\":\"string\"}},\"required\":[\"id\",\"name\"],\"type\":\"object\"},\"id\":{\"description\":\"Unique identifier for the quote\",\"type\":\"string\"},\"text\":{\"description\":\"The quote text\",\"type\":\"string\"}},\"required\":[\"id\",\"text\",\"author\"],\"type\":\"object\"}}},\"description\":\"Success\"},\"404\":{\"content\":{\"application/json\":{\"example\":{\"error\":\"Quote not found\"},\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message\",\"type\":\"string\"}},\"required\":[\"error\"],\"type\":\"object\"}}},\"description\":\"Quote not found\"}},\"securitySource\":\"unspecified\"}","source":"openapi3","version":1},"kind":"http","method":"GET","orig":"/api/quotes/{id}","segments":[{"lit":"api"},{"lit":"quotes"},{"var":"id"}],"select":{"exist":["id"]},"transform":{"req":"`reqdata`","res":"`body.author`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"quote","name__orig":"quote","Name":"Quote","name_":"quote","name-":"quote","NAME":"QUOTE","index$":0}, {"active":true,"entity":"quote","key$":"BasicQuoteFlow","kind":"basic","name":"BasicQuoteFlow","param":{},"step":[{"active":true,"data":{},"input":{},"match":{},"op":"list","spec":[],"valid":[{"apply":"ItemExists","def":{"ref":"quote_ref01"}}],"index$":0},{"active":true,"data":{},"input":{"ref":"quote_ref01","srcdatavar":"quote_ref01_data","suffix":"_dt0"},"match":{"id":"quote01"},"op":"load","spec":[],"valid":[{"apply":"TextFieldMark","def":{"mark":"Mark01-quote_ref01"}}],"index$":1}]}, 'Quote')
     }
     const client = setup.client
     const struct = setup.struct
@@ -116,13 +115,6 @@ function basicSetup(extra?: any) {
       }]
     })
 
-  // Detect whether the user provided a real ENTID JSON via env var. The
-  // basic flow consumes synthetic IDs from the fixture file; without an
-  // override those synthetic IDs reach the live API and 4xx. Surface this
-  // to the test so it can skip rather than fail.
-  const idmapEnvVal = process.env['QUOTE_RETRIEVAL_TEST_QUOTE_ENTID']
-  const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{')
-
   const env = envOverride({
     'QUOTE_RETRIEVAL_TEST_QUOTE_ENTID': idmap,
     'QUOTE_RETRIEVAL_TEST_LIVE': 'FALSE',
@@ -133,7 +125,13 @@ function basicSetup(extra?: any) {
 
   const live = 'TRUE' === env.QUOTE_RETRIEVAL_TEST_LIVE
 
+  const transport = createLiveTransport()
   if (live) {
+    const rawIds = process.env['QUOTE_RETRIEVAL_TEST_QUOTE_ENTID']
+    idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {}
+    if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+      throw new Error('Live ENTID must be a JSON object')
+    }
     client = new QuoteRetrievalSDK(merge([
       // FIRST, so the generated fields below win: sdk-test-control.json's
       // test.client.options adds to the live client, it does not redirect it.
@@ -145,7 +143,8 @@ function basicSetup(extra?: any) {
       // argument at all - so a bare 'extra' silently discarded the apikey
       // and server values above and handed the SDK undefined. Harmless
       // while there was nothing in that object; not harmless now.
-      extra || {}
+      extra || {},
+      { system: { fetch: transport.fetch } }
     ]))
   }
 
@@ -158,7 +157,7 @@ function basicSetup(extra?: any) {
     data: entityData,
     explain: 'TRUE' === env.QUOTE_RETRIEVAL_TEST_EXPLAIN,
     live,
-    syntheticOnly: live && !idmapOverridden,
+    transport,
     now: Date.now(),
   }
 

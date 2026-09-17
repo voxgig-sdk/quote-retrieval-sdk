@@ -105,12 +105,12 @@ local results, err = client:Quote():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/quote-retrieval-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/quote-retrieval-sdk/releases) |
-| Python | `voxgig-sdk-quote-retrieval` | publish pending — [install from git tag](https://github.com/voxgig-sdk/quote-retrieval-sdk/releases) |
-| PHP | `voxgig-sdk/quote-retrieval` | publish pending — [install from git tag](https://github.com/voxgig-sdk/quote-retrieval-sdk/releases) |
+| TypeScript | `@voxgig-sdk/quote-retrieval-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/quote-retrieval-sdk/tags) |
+| Python | `voxgig-sdk-quote-retrieval` | publish pending — [install from git tag](https://github.com/voxgig-sdk/quote-retrieval-sdk/tags) |
+| PHP | `voxgig-sdk/quote-retrieval` | publish pending — [install from git tag](https://github.com/voxgig-sdk/quote-retrieval-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/quote-retrieval-sdk/go` | `go get github.com/voxgig-sdk/quote-retrieval-sdk/go@latest` |
-| Ruby | `voxgig-sdk-quote-retrieval` | publish pending — [install from git tag](https://github.com/voxgig-sdk/quote-retrieval-sdk/releases) |
-| Lua | `voxgig-sdk-quote-retrieval` | publish pending — [install from git tag](https://github.com/voxgig-sdk/quote-retrieval-sdk/releases) |
+| Ruby | `voxgig-sdk-quote-retrieval` | publish pending — [install from git tag](https://github.com/voxgig-sdk/quote-retrieval-sdk/tags) |
+| Lua | `voxgig-sdk-quote-retrieval` | publish pending — [install from git tag](https://github.com/voxgig-sdk/quote-retrieval-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/quote-retrieval-sdk/go-cli` | `go install github.com/voxgig-sdk/quote-retrieval-sdk/go-cli/cmd/quote-retrieval@latest` |
 | Go MCP server | `github.com/voxgig-sdk/quote-retrieval-sdk/go-mcp` | `go get github.com/voxgig-sdk/quote-retrieval-sdk/go-mcp@latest` |
 

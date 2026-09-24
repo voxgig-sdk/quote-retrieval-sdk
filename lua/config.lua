@@ -87,37 +87,42 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "author",
+            ["title"] = "Author",
+            ["type"] = "`$OBJECT`",
+            ["req"] = true,
             ["op"] = {
               ["list"] = {
                 ["type"] = "`$ANY`",
               },
             },
-            ["req"] = true,
-            ["type"] = "`$OBJECT`",
           },
           {
-            ["format"] = "date-time",
             ["name"] = "createdAt",
-            ["short"] = "Timestamp when the quote was created",
+            ["title"] = "Created At",
             ["type"] = "`$STRING`",
+            ["short"] = "Timestamp when the quote was created",
+            ["format"] = "date-time",
           },
           {
             ["name"] = "id",
+            ["title"] = "Id",
+            ["type"] = "`$STRING`",
             ["req"] = true,
             ["short"] = "Unique identifier for the author",
-            ["type"] = "`$STRING`",
           },
           {
             ["name"] = "name",
+            ["title"] = "Name",
+            ["type"] = "`$STRING`",
             ["req"] = true,
             ["short"] = "Name of the author",
-            ["type"] = "`$STRING`",
           },
           {
             ["name"] = "text",
+            ["title"] = "Text",
+            ["type"] = "`$STRING`",
             ["req"] = true,
             ["short"] = "The quote text",
-            ["type"] = "`$STRING`",
           },
         },
         ["id"] = {
@@ -131,24 +136,6 @@ local function make_config()
             ["name"] = "list",
             ["points"] = {
               {
-                ["args"] = {
-                  ["query"] = {
-                    {
-                      ["example"] = 12,
-                      ["kind"] = "query",
-                      ["name"] = "limit",
-                      ["orig"] = "limit",
-                      ["type"] = "`$INTEGER`",
-                    },
-                    {
-                      ["example"] = 0,
-                      ["kind"] = "query",
-                      ["name"] = "page",
-                      ["orig"] = "page",
-                      ["type"] = "`$INTEGER`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/quotes",
@@ -160,19 +147,38 @@ local function make_config()
                     ["lit"] = "quotes",
                   },
                 },
+                ["parts"] = {
+                  "api",
+                  "quotes",
+                },
+                ["rename"] = {},
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body`",
+                },
+                ["args"] = {
+                  ["query"] = {
+                    {
+                      ["name"] = "limit",
+                      ["orig"] = "limit",
+                      ["type"] = "`$INTEGER`",
+                      ["kind"] = "query",
+                      ["example"] = 12,
+                    },
+                    {
+                      ["name"] = "page",
+                      ["orig"] = "page",
+                      ["type"] = "`$INTEGER`",
+                      ["kind"] = "query",
+                      ["example"] = 0,
+                    },
+                  },
+                },
                 ["select"] = {
                   ["exist"] = {
                     "limit",
                     "page",
                   },
-                },
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
-                },
-                ["parts"] = {
-                  "api",
-                  "quotes",
                 },
               },
             },
@@ -182,18 +188,6 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["args"] = {
-                  ["params"] = {
-                    {
-                      ["example"] = "abc123",
-                      ["kind"] = "param",
-                      ["name"] = "id",
-                      ["orig"] = "id",
-                      ["reqd"] = true,
-                      ["type"] = "`$STRING`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/quotes/{id}",
@@ -208,19 +202,32 @@ local function make_config()
                     ["var"] = "id",
                   },
                 },
-                ["select"] = {
-                  ["exist"] = {
-                    "id",
-                  },
-                },
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body.author`",
-                },
                 ["parts"] = {
                   "api",
                   "quotes",
                   "{id}",
+                },
+                ["rename"] = {},
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body.author`",
+                },
+                ["args"] = {
+                  ["params"] = {
+                    {
+                      ["name"] = "id",
+                      ["orig"] = "id",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "param",
+                      ["reqd"] = true,
+                      ["example"] = "abc123",
+                    },
+                  },
+                },
+                ["select"] = {
+                  ["exist"] = {
+                    "id",
+                  },
                 },
               },
             },

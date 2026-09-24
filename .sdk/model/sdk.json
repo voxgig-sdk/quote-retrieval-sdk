@@ -24,55 +24,126 @@
         "repr": "auto"
       },
       "contributor": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "published": false,
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "quote": {
           "active": true,
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "author",
+          "fields": {
+            "author": {
+              "a": true,
+              "h": "Author",
+              "n": "author",
               "op": {
                 "list": {
                   "req": false,
                   "type": "`$ANY`"
                 }
               },
-              "req": true,
-              "type": "`$OBJECT`"
+              "r": true,
+              "t": "`$OBJECT`"
             },
-            {
-              "active": true,
-              "format": "date-time",
-              "name": "createdAt",
-              "req": false,
-              "short": "Timestamp when the quote was created",
-              "type": "`$STRING`"
+            "createdAt": {
+              "a": true,
+              "fo": "date-time",
+              "h": "Created At",
+              "n": "createdAt",
+              "r": false,
+              "sh": "Timestamp when the quote was created",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": true,
-              "short": "Unique identifier for the author",
-              "type": "`$STRING`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": true,
+              "sh": "Unique identifier for the author",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": true,
-              "short": "Name of the author",
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": true,
+              "sh": "Name of the author",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "text",
-              "req": true,
-              "short": "The quote text",
-              "type": "`$STRING`"
+            "text": {
+              "a": true,
+              "h": "Text",
+              "n": "text",
+              "r": true,
+              "sh": "The quote text",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -84,39 +155,45 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/quotes",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "example": 12,
-                        "kind": "query",
-                        "name": "limit",
-                        "orig": "limit",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 12,
+                        "k": "query",
+                        "n": "limit",
+                        "or": "limit",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "example": 0,
-                        "kind": "query",
-                        "name": "page",
-                        "orig": "page",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 0,
+                        "k": "query",
+                        "n": "page",
+                        "or": "page",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /api/quotes",
-                    "json": "{\"operationId\":\"getQuotes\",\"parameters\":[{\"description\":\"Page number (0-indexed). Defaults to 0.\",\"in\":\"query\",\"name\":\"page\",\"required\":false,\"schema\":{\"default\":0,\"minimum\":0,\"type\":\"integer\"}},{\"description\":\"Number of quotes per page (1-100). Defaults to 12.\",\"in\":\"query\",\"name\":\"limit\",\"required\":false,\"schema\":{\"default\":12,\"maximum\":100,\"minimum\":1,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":{\"data\":[{\"author\":{\"id\":\"xyz789\",\"name\":\"Steve Jobs\",\"slug\":\"steve-jobs\"},\"createdAt\":\"2024-01-15T10:30:00.000Z\",\"id\":\"abc123\",\"text\":\"The only way to do great work is to love what you do.\"}],\"pagination\":{\"hasNextPage\":true,\"hasPreviousPage\":false,\"limit\":12,\"page\":0,\"totalCount\":1000,\"totalPages\":84}},\"schema\":{\"properties\":{\"data\":{\"items\":{\"allOf\":[{\"properties\":{\"author\":{\"properties\":{\"id\":{\"description\":\"Unique identifier for the author\",\"type\":\"string\"},\"name\":{\"description\":\"Name of the author\",\"type\":\"string\"}},\"required\":[\"id\",\"name\"],\"type\":\"object\"},\"id\":{\"description\":\"Unique identifier for the quote\",\"type\":\"string\"},\"text\":{\"description\":\"The quote text\",\"type\":\"string\"}},\"required\":[\"id\",\"text\",\"author\"],\"type\":\"object\"},{\"properties\":{\"author\":{\"allOf\":[{\"properties\":{\"id\":{\"description\":\"Unique identifier for the author\",\"type\":\"string\"},\"name\":{\"description\":\"Name of the author\",\"type\":\"string\"}},\"required\":[\"id\",\"name\"],\"type\":\"object\"},{\"properties\":{\"slug\":{\"description\":\"URL-friendly version of the author's name\",\"type\":\"string\"}},\"type\":\"object\"}]},\"createdAt\":{\"description\":\"Timestamp when the quote was created\",\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"}]},\"type\":\"array\"},\"pagination\":{\"properties\":{\"hasNextPage\":{\"description\":\"Indicates if there is a next page\",\"type\":\"boolean\"},\"hasPreviousPage\":{\"description\":\"Indicates if there is a previous page\",\"type\":\"boolean\"},\"limit\":{\"description\":\"Number of items per page\",\"type\":\"integer\"},\"page\":{\"description\":\"Current page number (0-indexed)\",\"type\":\"integer\"},\"totalCount\":{\"description\":\"Total number of quotes available\",\"type\":\"integer\"},\"totalPages\":{\"description\":\"Total number of pages\",\"type\":\"integer\"}},\"required\":[\"page\",\"limit\",\"totalCount\",\"totalPages\",\"hasNextPage\",\"hasPreviousPage\"],\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Success\"},\"404\":{\"content\":{\"application/json\":{\"example\":{\"error\":\"Invalid request\"},\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message\",\"type\":\"string\"}},\"required\":[\"error\"],\"type\":\"object\"}}},\"description\":\"Not Found\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/quotes",
+                  "q": {
+                    "exist": [
+                      "limit",
+                      "page"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/quotes",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -124,13 +201,7 @@
                       "lit": "quotes"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "limit",
-                      "page"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -142,30 +213,35 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/quotes/{id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "example": "abc123",
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "abc123",
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /api/quotes/{id}",
-                    "json": "{\"operationId\":\"getQuoteById\",\"parameters\":[{\"description\":\"The quote ID, or a special value: 'random' for a random quote, 'quote-of-the-day' for the daily quote.\",\"examples\":{\"quoteOfTheDay\":{\"summary\":\"Quote of the day\",\"value\":\"quote-of-the-day\"},\"random\":{\"summary\":\"Random quote\",\"value\":\"random\"},\"specificId\":{\"summary\":\"Specific quote ID\",\"value\":\"abc123\"}},\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":{\"author\":{\"id\":\"xyz789\",\"name\":\"Steve Jobs\"},\"id\":\"abc123\",\"text\":\"The only way to do great work is to love what you do.\"},\"schema\":{\"properties\":{\"author\":{\"properties\":{\"id\":{\"description\":\"Unique identifier for the author\",\"type\":\"string\"},\"name\":{\"description\":\"Name of the author\",\"type\":\"string\"}},\"required\":[\"id\",\"name\"],\"type\":\"object\"},\"id\":{\"description\":\"Unique identifier for the quote\",\"type\":\"string\"},\"text\":{\"description\":\"The quote text\",\"type\":\"string\"}},\"required\":[\"id\",\"text\",\"author\"],\"type\":\"object\"}}},\"description\":\"Success\"},\"404\":{\"content\":{\"application/json\":{\"example\":{\"error\":\"Quote not found\"},\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message\",\"type\":\"string\"}},\"required\":[\"error\"],\"type\":\"object\"}}},\"description\":\"Quote not found\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/quotes/{id}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/quotes/{id}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -176,12 +252,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.author`"
                   }
@@ -610,13 +681,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -626,19 +697,19 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "quote_ref01",
                 "srcdatavar": "quote_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "quote01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {

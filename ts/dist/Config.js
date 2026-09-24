@@ -11,19 +11,12 @@ const FEATURE_CLASS = {
     test: TestFeature_1.TestFeature,
     timeout: TimeoutFeature_1.TimeoutFeature,
 };
-// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
-// the model's active plugin groups. A feature that takes a `plugins` option
-// (secrets over sekreto) reads its own entry; a feature with no plugins has
-// none. Named imports above make each definition statically reachable, so
-// an SDK carries exactly the plugin modules its model selects — the same
-// leanness the old side-effect registry imports bought, without a registry.
 const FEATURE_PLUGINS = {};
 exports.FEATURE_PLUGINS = FEATURE_PLUGINS;
 class Config {
     makeFeature(fn) {
         const fc = FEATURE_CLASS[fn];
         const fi = new fc();
-        // TODO: errors etc
         return fi;
     }
     // False for a feature added at runtime via options.extend (station's
@@ -114,37 +107,42 @@ class Config {
             "fields": [
                 {
                     "name": "author",
+                    "title": "Author",
+                    "type": "`$OBJECT`",
+                    "req": true,
                     "op": {
                         "list": {
                             "type": "`$ANY`"
                         }
-                    },
-                    "req": true,
-                    "type": "`$OBJECT`"
+                    }
                 },
                 {
-                    "format": "date-time",
                     "name": "createdAt",
+                    "title": "Created At",
+                    "type": "`$STRING`",
                     "short": "Timestamp when the quote was created",
-                    "type": "`$STRING`"
+                    "format": "date-time"
                 },
                 {
                     "name": "id",
+                    "title": "Id",
+                    "type": "`$STRING`",
                     "req": true,
-                    "short": "Unique identifier for the author",
-                    "type": "`$STRING`"
+                    "short": "Unique identifier for the author"
                 },
                 {
                     "name": "name",
+                    "title": "Name",
+                    "type": "`$STRING`",
                     "req": true,
-                    "short": "Name of the author",
-                    "type": "`$STRING`"
+                    "short": "Name of the author"
                 },
                 {
                     "name": "text",
+                    "title": "Text",
+                    "type": "`$STRING`",
                     "req": true,
-                    "short": "The quote text",
-                    "type": "`$STRING`"
+                    "short": "The quote text"
                 }
             ],
             "id": {
@@ -158,24 +156,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "example": 12,
-                                        "kind": "query",
-                                        "name": "limit",
-                                        "orig": "limit",
-                                        "type": "`$INTEGER`"
-                                    },
-                                    {
-                                        "example": 0,
-                                        "kind": "query",
-                                        "name": "page",
-                                        "orig": "page",
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/api/quotes",
@@ -187,20 +167,39 @@ class Config {
                                     "lit": "quotes"
                                 }
                             ],
+                            "parts": [
+                                "api",
+                                "quotes"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "limit",
+                                        "orig": "limit",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "example": 12
+                                    },
+                                    {
+                                        "name": "page",
+                                        "orig": "page",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "example": 0
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "limit",
                                     "page"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "api",
-                                "quotes"
-                            ]
+                            }
                         }
                     ]
                 },
@@ -209,18 +208,6 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "example": "abc123",
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "id",
-                                        "reqd": true,
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/api/quotes/{id}",
@@ -235,20 +222,33 @@ class Config {
                                     "var": "id"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "id"
-                                ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body.author`"
-                            },
                             "parts": [
                                 "api",
                                 "quotes",
                                 "{id}"
-                            ]
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body.author`"
+                            },
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "id",
+                                        "type": "`$STRING`",
+                                        "kind": "param",
+                                        "reqd": true,
+                                        "example": "abc123"
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "id"
+                                ]
+                            }
                         }
                     ]
                 }
